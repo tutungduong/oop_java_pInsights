@@ -11,10 +11,12 @@
    - [Hierarchical Inheritance](#hierarchical-inheritance)
    - [Hybrid Inheritance](#hybrid-inheritance)
 3. [Aggregation](#aggregation)
+4. [Other](#Other)
+   - [This and super](#This-vs-super)
 
 ## Class And Object
 
-#### CLASS:
+#### CLASS
 
 A class is a user defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type. In general, class declarations can include these components, in order:
 
@@ -28,7 +30,7 @@ A class is a user defined blueprint or prototype from which objects are created.
 
     Body: The class body surrounded by braces, { }.
 
-#### OBJECT:
+#### OBJECT
 
 An object is an instance of a class.Technically, Class is a template which describes what state and behavior of an instance this class can have. Object implements the state and behavior in the form of variables and methods and requires some memory allocated. An object consists of:
 
@@ -38,7 +40,7 @@ An object is an instance of a class.Technically, Class is a template which descr
 
     Identity : It gives a unique name to an object and enables one object to interact with other objects.
 
-### CONSTRUCTOR:
+### CONSTRUCTOR
 
 A constructor is used in the creation of an object, that's an instance of a class.
 
@@ -633,5 +635,62 @@ public class Main {
 ```
 
 </details>
+</details>
+
+## Other
+
+### This vs Super
+
+**This**
+
+    The keyword this, is commonly used with constructors and setters, and optionally used in getters.
+
+    In this example, we're using the this keyword in the constructor and setter, since there's a parameter with the same name, as the instance or field.
+
+    In the getter we don't have any parameters, so there's no conflict, so therefore the this keyword is optional there.
+
+<details>
+<summary><strong> Keyword this </strong></summary>
+
+<p >
+<img height="350" src="../Images/keywork_this.png">
+</p>
 
 </details>
+
+<br>
+
+**Super**
+
+    The keyword super, is commonly used with method overriding, when we call a method with the same name, from the parent class. .
+
+    In this example, we have a method called printMethod, that calls super.printMethod.
+
+<details>
+<summary><strong> Keyword super </strong></summary>
+
+<p align="center">
+<img height="400" src="../Images/keywork_super.png">
+</p>
+
+</details>
+<br>
+
+**_Comparing Both Examples_**
+
+<img height="350" src="../Images/comparing_both.png">
+
+<strong>Example for this() and super()</strong>
+
+In this example, we have a class Shape, with x and y variables, and a class Rectangle that extends Shape, with variables width and height.
+In the Rectangle class, the 1st constructor is calling the 2nd constructor.
+
+The 2nd constructor calls the parent constructor, with parameters x and y.
+
+The parent constructor will initialize the x and y variables, while the 2nd Rectangle constructor will initialize the width and height variables.
+
+Here, we have both the super() and this() calls.
+
+<p align="center">
+<img height="400" src="../Images/super_this.png">
+</p>
