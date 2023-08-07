@@ -1,19 +1,9 @@
 # Table of Contents
 
-1. [Method Overloading and Overriding](#Class-And-Object)
-   - [Constructor](#Constructor)
-   - [Static and Instance Method](#Static-and-instance-method)
-   - [POJO and The Record](#Different-POJO-and-The-Record)
-2. [Inheritance](#inheritance)
-   - [Single Inheritance](#single-inheritance)
-   - [Multiple Inheritance](#multiple-inheritance)
-   - [Multilevel Inheritance](#multilevel-inheritance)
-   - [Hierarchical Inheritance](#hierarchical-inheritance)
-   - [Hybrid Inheritance](#hybrid-inheritance)
-3. [Aggregation](#aggregation)
-4. [Other](#Other)
-   - [This and super](#This-vs-super)
-   - [Method Overriding and super](#This-vs-super)
+1. [Method Overloading and Overriding](#Method-Overloading-And-Overriding)
+   - [Method Overloading](<#Method-Overloading-(Compile-time-polymorphism)>)
+   - [Method Overriding](<#Method-Overriding-(Runtime-Polymorphism)>)
+   - [Method Overloading vs Overriding](#Method-Overriding-vs-Method-Overloading)
 
 ## Method Overloading and Overriding
 
@@ -94,8 +84,8 @@ There's also some important points about method overriding to keep in mind.
 | Method Overloading                                                       | Method Overriding                                                                |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
 | Provides functionality to reuse a method name with different parameters. | Used to override a behavior which the class has inherited from the parent class. |
-| Usually in a single class but may also be used in a child class.         | Always in two classes that have a child-parent or IS-A relationship.             |
-| Must have different parameters                                           | Must have the same parameters and same name.                                     |
-| May have different return types.                                         | Must have the same return type or covariant return type(child class).            |
-| May have different access modifiers(private, protected, public).         | Must NOT have a lower modifier but may have a higher modifier                    |
-| May throw different exceptions.                                          | Must NOT throw a new or broader checked exception.                               |
+| Usually in a single class but may also be used in a child class.         | `Always in two classes` that have a child-parent or IS-A relationship.           |
+| `Must have` different parameters                                         | `Must have` the same parameters and same name.                                   |
+| May have different return types.                                         | `Must have` the same return type or covariant return type(child class).          |
+| May have different access modifiers(private, protected, public).         | `Must NOT` have a lower modifier but may have a higher modifier                  |
+| May throw different exceptions.                                          | `Must NOT` throw a new or broader checked exception.                             |
