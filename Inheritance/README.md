@@ -679,8 +679,9 @@ public class Main {
 
 **_Comparing Both Examples_**
 
-<img height="350" src="../Images/comparing_both.png">
-
+<p align="center">
+<img src="../Images/comparing_both.png">
+</p>
 <strong>Example for this() and super()</strong>
 
 In this example, we have a class Shape, with x and y variables, and a class Rectangle that extends Shape, with variables width and height.
