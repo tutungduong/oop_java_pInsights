@@ -96,3 +96,19 @@ There's also some important points about method overriding to keep in mind.
 | May have different return types.                                         | `Must have` the same return type or covariant return type(child class).          |
 | May have different access modifiers(private, protected, public).         | `Must NOT` have a lower modifier but may have a higher modifier                  |
 | May throw different exceptions.                                          | `Must NOT` throw a new or broader checked exception.                             |
+
+## Composittion
+
+`Composition` is another component of object-oriented programming. `Composition` is a way to make the combination of classes, act like a single coherent object.
+
+**The reasons composition is preferred over inheritance:**
+
+- Composition is more flexible. You can add parts in, or remove them, and these changes are less likely to have a downstream effect.
+- Composition provides functional reuse outside of the class hierarchy, meaning classes can share attributes & behavior, by having similar components, instead of inheriting functionality from a parent or base class.
+- Java's inheritance breaks encapsulation, because subclasses may need direct access to a parent's state or behavior.
+
+**Why is Inheritance less flexible?**
+
+- Inheritance is less flexible.
+- Adding a class to, or removing a class from, a class hierarchy, may impact all subclasses from that point.
+- In addition, a new subclass may not need all the functionality or attributes of its parent class.
