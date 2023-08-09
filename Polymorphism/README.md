@@ -1,9 +1,16 @@
 # Table of Contents
 
 1. [Method Overloading and Overriding](#Method-Overloading-And-Overriding)
+
    - [Method Overloading](<#Method-Overloading-(Compile-time-polymorphism)>)
    - [Method Overriding](<#Method-Overriding-(Runtime-Polymorphism)>)
    - [Method Overloading vs Overriding](#Method-Overriding-vs-Method-Overloading)
+
+2. [Composition](#Composition)
+
+3. [Encapsulation](#Encapsulation)
+
+4. [Polymorphism](#Polymorphism)
 
 ## Method Overloading and Overriding
 
