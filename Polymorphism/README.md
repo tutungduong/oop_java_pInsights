@@ -97,7 +97,11 @@ There's also some important points about method overriding to keep in mind.
 | May have different access modifiers(private, protected, public).         | `Must NOT` have a lower modifier but may have a higher modifier                  |
 | May throw different exceptions.                                          | `Must NOT` throw a new or broader checked exception.                             |
 
-## Composittion
+## Composition
+
+<p align="center">
+<img height="350px" src="../Images/composition.png">
+</p>
 
 `Composition` is another component of object-oriented programming. `Composition` is a way to make the combination of classes, act like a single coherent object.
 
@@ -112,3 +116,271 @@ There's also some important points about method overriding to keep in mind.
 - Inheritance is less flexible.
 - Adding a class to, or removing a class from, a class hierarchy, may impact all subclasses from that point.
 - In addition, a new subclass may not need all the functionality or attributes of its parent class.
+
+<details>
+<summary><strong> Example for composition </strong></summary>
+
+```java
+
+public class SmartKitchen {
+
+    private CoffeeMaker brewMaster;
+    private Refrigerator iceBox;
+    private DishWasher dishWasher;
+
+    public SmartKitchen() {
+        brewMaster = new CoffeeMaker();
+        iceBox = new Refrigerator();
+        dishWasher = new DishWasher();
+    }
+
+    public CoffeeMaker getBrewMaster() {
+        return brewMaster;
+    }
+
+    public Refrigerator getIceBox() {
+        return iceBox;
+    }
+
+    public DishWasher getDishWasher() {
+        return dishWasher;
+    }
+
+    public void setKitchenState(boolean coffeeFlag, boolean fridgeFlag,
+                                boolean dishWasherFlag) {
+
+        brewMaster.setHasWorkToDo(coffeeFlag);
+        iceBox.setHasWorkToDo(fridgeFlag);
+        dishWasher.setHasWorkToDo(dishWasherFlag);
+    }
+
+    public void doKitchenWork() {
+        brewMaster.brewCoffee();
+        iceBox.orderFood();
+        dishWasher.doDishes();
+    }
+}
+
+class CoffeeMaker {
+
+    private boolean hasWorkToDo;
+
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+        this.hasWorkToDo = hasWorkToDo;
+    }
+
+    public void brewCoffee() {
+
+        if (hasWorkToDo) {
+            System.out.println("Brewing Coffee");
+            hasWorkToDo = false;
+        }
+    }
+}
+
+
+class Refrigerator {
+
+    private boolean hasWorkToDo;
+
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+        this.hasWorkToDo = hasWorkToDo;
+    }
+
+    public void orderFood() {
+
+        if (hasWorkToDo) {
+            System.out.println("Ordering Food");
+            hasWorkToDo = false;
+        }
+    }
+}
+
+class DishWasher {
+
+    private boolean hasWorkToDo;
+
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+        this.hasWorkToDo = hasWorkToDo;
+    }
+
+    public void doDishes() {
+
+        if (hasWorkToDo) {
+            System.out.println("Washing Dishes");
+            hasWorkToDo = false;
+        }
+    }
+}
+```
+
+</details>
+
+## Encapsulation
+
+**Why would we want to hide things in Java?**
+
+- To make the interface simpler, we may want to hide unnecessary details.
+
+- To protect the integrity of data on an object, we may hide or restrict access to some of the data and operations.
+
+- To decouple the published interface from the internal details of the class, we may hide actual names and types of class members.
+
+**What do we mean by interface here?**
+
+- Although Java has a type called interface, that's not what we're talking about here.
+
+- When we talk about a class's public or published interface, we're really talking about the class members that are exposed to, or can be accessed by, the calling code.
+
+- Everything else in the class is internal, or private to it.
+  An application programming interface, or API, is the public contract, that tells others how to use the class.
+
+**Problems**
+
+- Allowing direct access to data on an object, can potentially bypass checks, and additional processing, your class has in place to manage the data.
+- Allowing direct access to fields, means calling code would need to change, when you edit any of the fields.
+- Omitting a constructor, that would accept initialization data, may mean the calling code is responsible for setting up this data, on the new object.
+
+**The problems when classes aren't properly encapsulated**
+
+- Allowing direct access to data on an object, can bypass checks and operations.
+- It encourages an interdependency, or coupling, between the calling code and the class.
+- For the previous example, we showed that changing a field name, broke the calling code.
+- And we also showed, that the calling code had to take on the responsibility, for properly initializing a new Player.
+
+**Benefits of Encapsulation**
+
+- That's really one of the huge benefits of encapsulation, is that you're not actually affecting any other code.
+- It's sort of like a black box in many ways. But the EnhancedPlayer class has more control over it's data.
+
+**Encapsulation Principles**
+
+_To create an encapsulated class, you want to:_
+
+- Create constructors for object initialization, which enforces that only objects with valid data will get created.
+- Use the private access modifier for your fields.
+- Use setter and getter methods sparingly, and only as needed.
+- Use access modifiers that aren't private, only for the methods that the calling code needs to use.
+
+<details>
+<summary><strong> Example for encapsulated </strong></summary>
+
+```java
+
+public class Printer {
+
+    private int tonerLevel;
+    private int pagesPrinted;
+    private boolean duplex;
+
+    public Printer(int tonerLevel, boolean duplex) {
+        this.pagesPrinted = 0;
+        this.tonerLevel = (tonerLevel >= 0 && tonerLevel <= 100) ? tonerLevel : -1;
+        this.duplex = duplex;
+    }
+
+    public int addToner(int tonerAmount) {
+
+        int tempAmount = tonerAmount + tonerLevel;
+        if (tempAmount > 100 || tempAmount < 0) {
+            return -1;
+        }
+        tonerLevel += tonerAmount;
+        return tonerLevel;
+    }
+
+    public int printPages(int pages) {
+
+        int jobPages = (duplex) ? (pages / 2) + (pages % 2) : pages;
+        pagesPrinted += jobPages;
+        return jobPages;
+    }
+
+    public int getPagesPrinted() {
+        return pagesPrinted;
+    }
+}
+
+```
+
+</details>
+<br>
+
+## Polymorphism
+
+- Polymorphism lets us write code to call a method, but at runtime, this method's behavior can be different, for different objects.
+- This means the behavior that occurs, while the program is executing, depends on the runtime type of the object.
+- And the runtime type, might be different from the declared type in the code.
+- The declared type has to have some kind of relationship to the runtime type, and inheritance is one way to establish this relationship.
+- There are other ways, but in this here, we'll talk about how to use inheritance, to support polymorphism.
+
+**Polymorphism in action**
+
+That was polymorphism in action.
+
+- It's the ability to execute different behavior, for different types, which are determined at runtime. And yet we did it with just two statements, in the main method, as shown here.
+
+```java
+    Movie movie = Movie.getMovie(type,title);
+    movie.watchMovie();
+```
+
+- Polymorphism enables you to write generic code, based on the base class, or a parent class. And this code, in the main method, is extendable, meaning it doesn't have to change, as new subclasses become available.
+- This code can handle any instances that are a Movie, or a subclass of movie, that are returned from the factory method.
+
+<details>
+<summary><strong> Example for Polymorphism  </strong></summary>
+
+```java
+public class Car {
+
+    private String description;
+
+    public Car(String description) {
+        this.description = description;
+    }
+
+    public void startEngine() {
+        System.out.println("Car -> startEngine");
+    }
+
+    protected void runEngine() {
+        System.out.println("Car -> runEngine");
+    }
+
+    public void drive() {
+        System.out.println("Car -> driving, type is " + getClass().getSimpleName());
+        runEngine();
+    }
+}
+
+class GasPoweredCar extends Car {
+
+    private double avgKmPerLiter;
+    private int cylinders = 6;
+
+    public GasPoweredCar(String description) {
+        super(description);
+    }
+
+    public GasPoweredCar(String description, double avgKmPerLiter, int cylinders) {
+        super(description);
+        this.avgKmPerLiter = avgKmPerLiter;
+        this.cylinders = cylinders;
+    }
+
+    @Override
+    public void startEngine() {
+        System.out.printf("Gas -> All %d cylinders are fired up, Ready!%n", cylinders);
+    }
+
+    @Override
+    protected void runEngine() {
+        System.out.printf("Gas -> usage exceeds the average: %.2f %n", avgKmPerLiter);
+    }
+}
+
+```
+
+</details>
+<br>
