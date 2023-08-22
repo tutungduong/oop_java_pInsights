@@ -326,7 +326,7 @@ When a class has more than one child classes (subclasses) or in other words, mor
 When two or more classes inherits a single class, it is known as hierarchical inheritance. In the example given below, Dog and Cat classes inherits the Animal class, so there is hierarchical inheritance.
 
 <p align="center">
-<img height="200" src=https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
+<img height="200" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
 </p>
 
 **Example for Hierarchical Inheritance**
