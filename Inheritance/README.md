@@ -1,21 +1,4 @@
-# Table of Contents
-
-1. [Class and Object](#Object-And-Class)
-   - [Constructor](#Constructor)
-   - [Static and Instance Method](#Static-and-instance-method)
-   - [POJO and The Record](#Different-POJO-and-The-Record)
-2. [Inheritance](#inheritance)
-   - [Single Inheritance](#single-inheritance)
-   - [Multiple Inheritance](#multiple-inheritance)
-   - [Multilevel Inheritance](#multilevel-inheritance)
-   - [Hierarchical Inheritance](#hierarchical-inheritance)
-   - [Hybrid Inheritance](#hybrid-inheritance)
-3. [Aggregation](#aggregation)
-4. [Other](#Other)
-   - [This and super](#This-vs-super)
-   - [Method Overriding and super](#This-vs-super)
-
-### CONSTRUCTOR
+## Constructor
 
 A constructor is used in the creation of an object, that's an instance of a class.
 
@@ -43,8 +26,7 @@ This constructor has no parameters, and is often called the no-args (no argument
 
 If a class contains any other constructor declarations, then a default constructor is NOT implicitly declared.
 
-<details>
-<summary><strong>Example for Constructor</strong></summary>
+**Example for Constructor**
 
 ```java
 public class Customer {
@@ -53,45 +35,24 @@ public class Customer {
     private double creditLimit;
     private String email;
 
-    public Customer() {
+    public Customer() // Default Constructor {
         this("Nobody", "nobody@nowhere.com");
     }
 
-    public Customer(String name, String email) {
+    public Customer(String name, String email) // Parameterized Constructor
+    {
         this(name, 1000, email);
     }
 
-    public Customer(String name, double creditLimit, String email) {
+    public Customer(String name, double creditLimit, String email)  //Constructor Overloading
+    {
         this.name = name;
         this.creditLimit = creditLimit;
         this.email = email;
     }
-
-    public class Main {
-
-    public static void main(String[] args) {
-
-        Customer customer = new Customer("Tim", 1000,
-                "tim@email.com");
-        System.out.println(customer.getName());
-        System.out.println(customer.getCreditLimit());
-        System.out.println(customer.getEmail());
-
-        Customer secondCustomer = new Customer();
-        System.out.println(secondCustomer.getName());
-        System.out.println(secondCustomer.getCreditLimit());
-        System.out.println(secondCustomer.getEmail());
-
-        Customer thirdCustomer = new Customer("Joe", "joe@email.com");
-        System.out.println(thirdCustomer.getName());
-        System.out.println(thirdCustomer.getCreditLimit());
-        System.out.println(thirdCustomer.getEmail());
-    }
 }
 
 ```
-
-</details>
 
 ### STATIC AND INSTANCE METHOD
 
@@ -104,7 +65,7 @@ So inside a static method, we can't use the this keyword. Whenever you see a met
 <details>
 <summary><strong> Example for Static Methods</strong></summary>
 <p align="center">
-<img height="280" src="../Images/Static_methods.png">
+<img height="280" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/Static_methods.png">
 </p>
 
 </details>
@@ -118,8 +79,7 @@ Instance methods can access instance methods and instance variables directly.
 
 Instance methods can also access static methods and static variables directly.
 
-<details>
-<summary><strong> Example for Instance Methods</strong></summary>
+**Example for Instance Methods**
 
 ```java
 class Dog{
@@ -136,13 +96,12 @@ public class Main{
 }
 ```
 
-</details>
 <br>
 
 **When to use static or instance method in java**
 
 <p align="center">
-<img height="270" src="../Images/static_and_instance.png">
+<img height="270" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/static_and_instance.png">
 </p>
 
 ### Different POJO and The Record
@@ -240,7 +199,7 @@ In Oriented Object Programming, the computer programs are designed in such a way
 ## Type of Inheritance
 
 <p align="center">
-<img height="270" src="../Images/inheritance.jpg">
+<img height="270" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/type_inheritance.png">
 </p>
 
 ### Single Inheritance
@@ -250,13 +209,12 @@ In single inheritance, one class inherits the properties of another. It enables 
 When a class inherits another class, it is known as a single inheritance. In the example given below, Dog class inherits the Animal class, so there is the single inheritance.
 
 <p align="center">
-<img src="../Images/single-Inheritance.png">
+<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/single_Inheritance.png">
 </p>
 
 Here, Class A is your parent class and Class B is your child class which inherits the properties and behavior of the parent class
 
-<details>
-<summary><strong>Example for Single Inheritance</strong></summary>
+**Example for Single Inheritance**
 
 ```java
 class Animal{
@@ -271,7 +229,7 @@ class Dog extends Animal{
     }
 }
 
-class TestInheritance{
+class Main{
     public static void main(String args[]){
         Dog d=new Dog();
         d.bark();
@@ -284,18 +242,15 @@ barking...
 eating..
 ```
 
-</details>
-
 ### Multiple Inheritance
 
 To reduce the complexity and simplify the language, multiple inheritance is not supported in java.
 
 <p align="center">
-<img src="../Images/multiple-inheritance.png">
+<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/multiple-inheritance.png">
 </p>
 
-<details>
-<summary><strong>Example for Multiple Inheritance</strong></summary>
+**Example for Multiple Inheritance**
 
 ```java
 class A{
@@ -320,8 +275,6 @@ class C extends A,B{
 compile time error
 ```
 
-</details>
-
 ### Multilevel Inheritance
 
 When a class is derived from a class which is also derived from another class, i.e. a class having more than one parent class but at different levels, such type of inheritance is called Multilevel Inheritance.
@@ -329,13 +282,12 @@ When a class is derived from a class which is also derived from another class, i
 When there is a chain of inheritance, it is known as multilevel inheritance. As you can see in the example given below, BabyDog class inherits the Dog class which again inherits the Animal class, so there is a multilevel inheritance.
 
 <p align="center">
-<img src="../Images/multilevel-Inheritance.png">
+<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/multilevel-Inheritance.png">
 </p>
 
 If we talk about the flowchart, class B inherits the properties and behavior of class A and class C inherits the properties of class B. Here A is the parent class for B and class B is the parent class for C. So in this case class C implicitly inherits the properties and methods of class A along with Class B. That’s what is multilevel inheritance.
 
-<details>
-<summary><strong>Example for Multilevel Inheritance</strong></summary>
+**Example for Multilevel Inheritance**
 
 ```java
 class Animal{
@@ -367,8 +319,6 @@ barking...
 eating...
 ```
 
-</details>
-
 ### Hierarchical Inheritance
 
 When a class has more than one child classes (subclasses) or in other words, more than one child classes have the same parent class
@@ -376,11 +326,10 @@ When a class has more than one child classes (subclasses) or in other words, mor
 When two or more classes inherits a single class, it is known as hierarchical inheritance. In the example given below, Dog and Cat classes inherits the Animal class, so there is hierarchical inheritance.
 
 <p align="center">
-<img src="../Images/hierarchical-inheritance.jpg">
+<img height="200" src=https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
 </p>
 
-<details>
-<summary><strong>Example for Hierarchical Inheritance</strong></summary>
+**Example for Hierarchical Inheritance**
 
 ```java
 class Animal{
@@ -412,15 +361,72 @@ meowing...
 eating...
 ```
 
-</details>
-
 ### Hybrid Inheritance
 
 Hybrid inheritance is a combination of two or more types of inheritance.
 
 <p align="center">
-<img src="../Images/hybrid-inheritance.png">
+<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/hybrid_inheritance.png">
 </p>
+
+**Example for Hybrid Inheritance**
+
+```Java
+//parent class
+class GrandFather
+{
+    public void showG()
+    {
+        System.out.println("He is grandfather.");
+    }
+}
+//inherits GrandFather properties
+class Father extends GrandFather
+{
+    public void showF()
+    {
+        System.out.println("He is father.");
+    }
+}
+//inherits Father properties
+class Son extends Father
+{
+    public void showS()
+    {
+        System.out.println("He is son.");
+    }
+}
+//inherits Father properties
+public class Daughter extends Father
+{
+    public void showD()
+    {
+        System.out.println("She is daughter.");
+    }
+    public static void main(String args[])
+    {
+//Daughter obj = new Daughter();
+//obj.show();
+        Son obj = new Son();
+        obj.showS();  // Accessing Son class method
+        obj.showF();  // Accessing Father class method
+        obj.showG();  // Accessing GrandFather class method
+        Daughter obj2 = new Daughter();
+        obj2.showD();  // Accessing Daughter class method
+        obj2.showF();    // Accessing Father class method
+        obj2.showG();   // Accessing GrandFather class method
+    }
+}
+
+// RESULT
+
+    He is son.
+    He is father.
+    He is grandfather.
+    She is daughter.
+    He is father.
+    He is grandfather.
+```
 
 ## Aggregation
 
@@ -432,11 +438,7 @@ If a class have an entity reference, it is known as Aggregation
 
 Create a main method that will create either a SalariedEmployee or HourlyEmployee, and call the methods, getAge, collectPay, and the method shown for the specific type of class you decide to implement.
 
-<details>
-<summary> <strong >Click to see the solution </strong></summary>
-
-<details>
-<summary><strong>Class Worker</strong></summary>
+**Example for Aggregation**
 
 ```java
 public class Worker {
@@ -482,11 +484,6 @@ public class Worker {
 
 ```
 
-</details>
-
-<details>
-<summary><strong>Class Employee</strong></summary>
-
 ```java
 public class Employee extends Worker {
 
@@ -511,11 +508,6 @@ public class Employee extends Worker {
 }
 
 ```
-
-</details>
-
-<details>
-<summary><strong>Class Salaried Employee</strong></summary>
 
 ```java
 public class SalariedEmployee extends Employee {
@@ -547,11 +539,6 @@ public class SalariedEmployee extends Employee {
 
 ```
 
-</details>
-
-<details>
-<summary><strong>Class Hourly Employee</strong></summary>
-
 ```java
 public class HourlyEmployee extends Employee {
 
@@ -574,11 +561,6 @@ public class HourlyEmployee extends Employee {
 }
 
 ```
-
-</details>
-
-<details>
-<summary><strong>Main</strong></summary>
 
 ```java
 public class Main {
@@ -608,9 +590,6 @@ public class Main {
 }
 
 ```
-
-</details>
-</details>
 
 ## Other
 
