@@ -72,6 +72,52 @@ public class Person {
 
 [See more about Encapsulation](https://github.com/c0mr4dex/OOP-PInsights/blob/main/Encapsulation)
 
+### `Abstraction` <a name="abstraction"></a>
+
+Abstract Classes and Methods
+
+Objects only reveal internal mechanisms that are relevant for the use of other objects, hiding any unnecessary implementation code. This concept helps developers make changes and additions over time more easily.
+
+Data abstraction is the process of hiding certain details and showing only essential information to the user.
+Abstraction can be achieved with either abstract classes or interfaces (which you will learn more about in the next chapter).
+
+- **Abstract class**: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class).
+- **Abstract method**: can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
+
+An abstract class can have both abstract and regular methods:
+
+Example:
+
+```java
+// Abstract class
+abstract class Animal {
+  // Abstract method (does not have a body)
+  public abstract void sound();
+  // Regular method
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
+
+// Subclass (inherit from Animal)
+class Cat extends Animal {
+  public void sound() {
+    // The body of sound() is provided here
+    System.out.println("The cat says: Miau");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Cat myCat = new Cat(); // Create a Cat object
+    myCat.animalSound();
+    myCat.sleep();
+  }
+}
+```
+
+[See more about Abstraction](https://github.com/c0mr4dex/OOP-PInsights/blob/main/Abstraction)
+
 ## Object and Classes
 
 Exist two main concepts in OOP: Object and Classes.
