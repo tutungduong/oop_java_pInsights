@@ -163,6 +163,56 @@ class Car extends Vehicle {
 
   [See more about Inheritance](https://github.com/c0mr4dex/OOP-PInsights/blob/main/Inheritance)
 
+### `Polymorphism` <a name="polymorphism"></a>
+
+Objects are allowed to take on more than one form depending on the context. The program will determine which
+meaning or usage is necessary for each execution of that object, cutting down on the need to duplicate code.
+
+Refers to the ability of OOPs programming languages to differentiate between entities with the same name efficiently.
+
+Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.
+
+Like we specified in the previous chapter; Inheritance lets us inherit attributes and methods from another class. Polymorphism uses those methods to perform different tasks. This allows us to perform a single action in different ways
+
+Example
+
+```java
+class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Cat extends Animal {
+  public void animalSound() {
+    System.out.println("The cat says: Miau");
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: Guau");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();  // Create a Animal object
+    Animal myCat = new Cat();  // Create a Cat object
+    Animal myDog = new Dog();  // Create a Dog object
+    myAnimal.animalSound();
+    myCat.animalSound();
+    myDog.animalSound();
+  }
+}
+```
+
+**Why And When To Use "Inheritance" and "Polymorphism"?**
+
+It is useful for code reusability: reuse attributes and methods of an existing class when you create a new class.
+
+[See more about Polymorphism](https://github.com/c0mr4dex/OOP-PInsights/blob/main/Polymorphism)
+
 ## Object and Classes
 
 Exist two main concepts in OOP: Object and Classes.
@@ -170,7 +220,7 @@ Exist two main concepts in OOP: Object and Classes.
 #### Object:
 
 - Instances of clases
-- Instances of clases
+- Object = instance
 
 An instance is created so you can use the methods that that class defines.
 
@@ -208,11 +258,6 @@ A class is a user defined blueprint or prototype from which objects are created.
       Interfaces(if any): A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.
 
       Body: The class body surrounded by braces, { }.
-
-
-
-
-
 
 ## Other
 
