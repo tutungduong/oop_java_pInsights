@@ -442,18 +442,18 @@ System.out.println(Drawable.cube(3));
 - The main difference between interface and abstract class is that an interface provides an encapsulation mechanism for method protocols without forcing the user to use inheritance.
 - But there are many differences between abstract class and interface that are given below.
 
-|                                                              | Abstract class          | Interface                                              |
-| ------------------------------------------------------------ | ----------------------- | ------------------------------------------------------ |
-| An instance can be created from it                           | No                      | No                                                     |
-| Has a constructor                                            | Yes                     | No                                                     |
-| Implemented as part of the Class Hierarchy. Uses inheritance | Yes (in extends clause) | No(in implements clause)                               |
-| records and enums can extend or implement?                   | No                      | yes                                                    |
-| Inherits from java.lang.Object                               | Yes                     | No                                                     |
-| Can have both abstract methods and concrete methods          | Yes                     | Yes (as of jDK8)                                       |
-| Abstract methods must include abstract modifier              | Yes                     | No (implicit)                                          |
-| Supports default modifier for it's methods                   | No                      | Yes (as of jDK8)                                       |
-| Can have instance fields (non-static instance fields )       | Yes                     | No                                                     |
-| Can have static fields (class fields)                        | Yes                     | Yes - (implicity <strong>public static final</strong>) |
+|                                                              | Abstract class            | Interface                                                |
+| ------------------------------------------------------------ | ------------------------- | -------------------------------------------------------- |
+| An instance can be created from it                           | No                        | No                                                       |
+| Has a constructor                                            | Yes                       | No                                                       |
+| Implemented as part of the Class Hierarchy. Uses inheritance | Yes ( in extends clause ) | No ( in implements clause )                              |
+| records and enums can extend or implement?                   | No                        | yes                                                      |
+| Inherits from java.lang.Object                               | Yes                       | No                                                       |
+| Can have both abstract methods and concrete methods          | Yes                       | Yes ( as of jDK8 )                                       |
+| Abstract methods must include abstract modifier              | Yes                       | No ( implicit )                                          |
+| Supports default modifier for it's methods                   | No                        | Yes ( as of jDK8 )                                       |
+| Can have instance fields (non-static instance fields )       | Yes                       | No                                                       |
+| Can have static fields (class fields)                        | Yes                       | Yes - ( implicity <strong>public static final</strong> ) |
 
 | Abstract class                                                                                                                               | Interface                                                                                                                                                                                                               |
 | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
