@@ -1,59 +1,3 @@
-## Constructor
-
-A constructor is used in the creation of an object, that's an instance of a class.
-
-It is a special type of code block that has a specific name and parameters, much like a method.
-
-It has the same name as the class itself, and it doesn't return any values.
-
-You never include a return type from a constructor, not even void.
-
-You can, and should, specify an appropriate access modifier, to control who should be able to create new instances of the class.
-
-```java
-public class Account { // This is the class declaration
-    public Account(){ // This is the constructor declaration
-        // Constructor code is code to be executed as the object is created.
-    }
-}
-```
-
-**THE DEFAULT CONSTRUCTOR**
-
-If a class contains no constructor declarations, then a default constructor is implicitly declared.
-
-This constructor has no parameters, and is often called the no-args (no arguments) constructor.
-
-If a class contains any other constructor declarations, then a default constructor is NOT implicitly declared.
-
-**Example for Constructor**
-
-```java
-public class Customer {
-
-    private String name;
-    private double creditLimit;
-    private String email;
-
-    public Customer() // Default Constructor {
-        this("Nobody", "nobody@nowhere.com");
-    }
-
-    public Customer(String name, String email) // Parameterized Constructor
-    {
-        this(name, 1000, email);
-    }
-
-    public Customer(String name, double creditLimit, String email)  //Constructor Overloading
-    {
-        this.name = name;
-        this.creditLimit = creditLimit;
-        this.email = email;
-    }
-}
-
-```
-
 ### STATIC AND INSTANCE METHOD
 
 **Static Methods**
@@ -590,3 +534,119 @@ public class Main {
 }
 
 ``` -->
+
+## Composition
+
+<p align="center">
+<img height="350px" src="../Images/composition.png">
+</p>
+
+`Composition` is another component of object-oriented programming. `Composition` is a way to make the combination of classes, act like a single coherent object.
+
+**The reasons composition is preferred over inheritance:**
+
+- Composition is more flexible. You can add parts in, or remove them, and these changes are less likely to have a downstream effect.
+- Composition provides functional reuse outside of the class hierarchy, meaning classes can share attributes & behavior, by having similar components, instead of inheriting functionality from a parent or base class.
+- Java's inheritance breaks encapsulation, because subclasses may need direct access to a parent's state or behavior.
+
+**Why is Inheritance less flexible?**
+
+- Inheritance is less flexible.
+- Adding a class to, or removing a class from, a class hierarchy, may impact all subclasses from that point.
+- In addition, a new subclass may not need all the functionality or attributes of its parent class.
+
+**Example for composition**
+
+```java
+
+public class SmartKitchen {
+
+    private CoffeeMaker brewMaster;
+    private Refrigerator iceBox;
+    private DishWasher dishWasher;
+
+    public SmartKitchen() {
+        brewMaster = new CoffeeMaker();
+        iceBox = new Refrigerator();
+        dishWasher = new DishWasher();
+    }
+
+    public CoffeeMaker getBrewMaster() {
+        return brewMaster;
+    }
+
+    public Refrigerator getIceBox() {
+        return iceBox;
+    }
+
+    public DishWasher getDishWasher() {
+        return dishWasher;
+    }
+
+    public void setKitchenState(boolean coffeeFlag, boolean fridgeFlag,
+                                boolean dishWasherFlag) {
+
+        brewMaster.setHasWorkToDo(coffeeFlag);
+        iceBox.setHasWorkToDo(fridgeFlag);
+        dishWasher.setHasWorkToDo(dishWasherFlag);
+    }
+
+    public void doKitchenWork() {
+        brewMaster.brewCoffee();
+        iceBox.orderFood();
+        dishWasher.doDishes();
+    }
+}
+
+class CoffeeMaker {
+
+    private boolean hasWorkToDo;
+
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+        this.hasWorkToDo = hasWorkToDo;
+    }
+
+    public void brewCoffee() {
+
+        if (hasWorkToDo) {
+            System.out.println("Brewing Coffee");
+            hasWorkToDo = false;
+        }
+    }
+}
+
+
+class Refrigerator {
+
+    private boolean hasWorkToDo;
+
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+        this.hasWorkToDo = hasWorkToDo;
+    }
+
+    public void orderFood() {
+
+        if (hasWorkToDo) {
+            System.out.println("Ordering Food");
+            hasWorkToDo = false;
+        }
+    }
+}
+
+class DishWasher {
+
+    private boolean hasWorkToDo;
+
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+        this.hasWorkToDo = hasWorkToDo;
+    }
+
+    public void doDishes() {
+
+        if (hasWorkToDo) {
+            System.out.println("Washing Dishes");
+            hasWorkToDo = false;
+        }
+    }
+}
+```

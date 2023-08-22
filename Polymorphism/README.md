@@ -1,3 +1,78 @@
+## Polymorphism
+
+- Polymorphism lets us write code to call a method, but at runtime, this method's behavior can be different, for different objects.
+- This means the behavior that occurs, while the program is executing, depends on the runtime type of the object.
+- And the runtime type, might be different from the declared type in the code.
+- The declared type has to have some kind of relationship to the runtime type, and inheritance is one way to establish this relationship.
+- There are other ways, but in this here, we'll talk about how to use inheritance, to support polymorphism.
+
+**Polymorphism in action**
+
+That was polymorphism in action.
+
+- It's the ability to execute different behavior, for different types, which are determined at runtime. And yet we did it with just two statements, in the main method, as shown here.
+
+```java
+    Movie movie = Movie.getMovie(type,title);
+    movie.watchMovie();
+```
+
+- Polymorphism enables you to write generic code, based on the base class, or a parent class. And this code, in the main method, is extendable, meaning it doesn't have to change, as new subclasses become available.
+- This code can handle any instances that are a Movie, or a subclass of movie, that are returned from the factory method.
+
+**Example for Polymorphism**
+
+```java
+public class Car {
+
+    private String description;
+
+    public Car(String description) {
+        this.description = description;
+    }
+
+    public void startEngine() {
+        System.out.println("Car -> startEngine");
+    }
+
+    protected void runEngine() {
+        System.out.println("Car -> runEngine");
+    }
+
+    public void drive() {
+        System.out.println("Car -> driving, type is " + getClass().getSimpleName());
+        runEngine();
+    }
+}
+
+class GasPoweredCar extends Car {
+
+    private double avgKmPerLiter;
+    private int cylinders = 6;
+
+    public GasPoweredCar(String description) {
+        super(description);
+    }
+
+    public GasPoweredCar(String description, double avgKmPerLiter, int cylinders) {
+        super(description);
+        this.avgKmPerLiter = avgKmPerLiter;
+        this.cylinders = cylinders;
+    }
+
+    @Override
+    public void startEngine() {
+        System.out.printf("Gas -> All %d cylinders are fired up, Ready!%n", cylinders);
+    }
+
+    @Override
+    protected void runEngine() {
+        System.out.printf("Gas -> usage exceeds the average: %.2f %n", avgKmPerLiter);
+    }
+}
+
+```
+
 ## Method Overloading and Overriding
 
 ### Method Overloading (Compile time Polymorphism)
@@ -82,194 +157,3 @@ There's also some important points about method overriding to keep in mind.
 | May have different return types.                                         | `Must have` the same return type or covariant return type(child class).          |
 | May have different access modifiers(private, protected, public).         | `Must NOT` have a lower modifier but may have a higher modifier                  |
 | May throw different exceptions.                                          | `Must NOT` throw a new or broader checked exception.                             |
-
-## Composition
-
-<p align="center">
-<img height="350px" src="../Images/composition.png">
-</p>
-
-`Composition` is another component of object-oriented programming. `Composition` is a way to make the combination of classes, act like a single coherent object.
-
-**The reasons composition is preferred over inheritance:**
-
-- Composition is more flexible. You can add parts in, or remove them, and these changes are less likely to have a downstream effect.
-- Composition provides functional reuse outside of the class hierarchy, meaning classes can share attributes & behavior, by having similar components, instead of inheriting functionality from a parent or base class.
-- Java's inheritance breaks encapsulation, because subclasses may need direct access to a parent's state or behavior.
-
-**Why is Inheritance less flexible?**
-
-- Inheritance is less flexible.
-- Adding a class to, or removing a class from, a class hierarchy, may impact all subclasses from that point.
-- In addition, a new subclass may not need all the functionality or attributes of its parent class.
-
-**Example for composition**
-
-```java
-
-public class SmartKitchen {
-
-    private CoffeeMaker brewMaster;
-    private Refrigerator iceBox;
-    private DishWasher dishWasher;
-
-    public SmartKitchen() {
-        brewMaster = new CoffeeMaker();
-        iceBox = new Refrigerator();
-        dishWasher = new DishWasher();
-    }
-
-    public CoffeeMaker getBrewMaster() {
-        return brewMaster;
-    }
-
-    public Refrigerator getIceBox() {
-        return iceBox;
-    }
-
-    public DishWasher getDishWasher() {
-        return dishWasher;
-    }
-
-    public void setKitchenState(boolean coffeeFlag, boolean fridgeFlag,
-                                boolean dishWasherFlag) {
-
-        brewMaster.setHasWorkToDo(coffeeFlag);
-        iceBox.setHasWorkToDo(fridgeFlag);
-        dishWasher.setHasWorkToDo(dishWasherFlag);
-    }
-
-    public void doKitchenWork() {
-        brewMaster.brewCoffee();
-        iceBox.orderFood();
-        dishWasher.doDishes();
-    }
-}
-
-class CoffeeMaker {
-
-    private boolean hasWorkToDo;
-
-    public void setHasWorkToDo(boolean hasWorkToDo) {
-        this.hasWorkToDo = hasWorkToDo;
-    }
-
-    public void brewCoffee() {
-
-        if (hasWorkToDo) {
-            System.out.println("Brewing Coffee");
-            hasWorkToDo = false;
-        }
-    }
-}
-
-
-class Refrigerator {
-
-    private boolean hasWorkToDo;
-
-    public void setHasWorkToDo(boolean hasWorkToDo) {
-        this.hasWorkToDo = hasWorkToDo;
-    }
-
-    public void orderFood() {
-
-        if (hasWorkToDo) {
-            System.out.println("Ordering Food");
-            hasWorkToDo = false;
-        }
-    }
-}
-
-class DishWasher {
-
-    private boolean hasWorkToDo;
-
-    public void setHasWorkToDo(boolean hasWorkToDo) {
-        this.hasWorkToDo = hasWorkToDo;
-    }
-
-    public void doDishes() {
-
-        if (hasWorkToDo) {
-            System.out.println("Washing Dishes");
-            hasWorkToDo = false;
-        }
-    }
-}
-```
-
-## Polymorphism
-
-- Polymorphism lets us write code to call a method, but at runtime, this method's behavior can be different, for different objects.
-- This means the behavior that occurs, while the program is executing, depends on the runtime type of the object.
-- And the runtime type, might be different from the declared type in the code.
-- The declared type has to have some kind of relationship to the runtime type, and inheritance is one way to establish this relationship.
-- There are other ways, but in this here, we'll talk about how to use inheritance, to support polymorphism.
-
-**Polymorphism in action**
-
-That was polymorphism in action.
-
-- It's the ability to execute different behavior, for different types, which are determined at runtime. And yet we did it with just two statements, in the main method, as shown here.
-
-```java
-    Movie movie = Movie.getMovie(type,title);
-    movie.watchMovie();
-```
-
-- Polymorphism enables you to write generic code, based on the base class, or a parent class. And this code, in the main method, is extendable, meaning it doesn't have to change, as new subclasses become available.
-- This code can handle any instances that are a Movie, or a subclass of movie, that are returned from the factory method.
-
-**Example for Polymorphism**
-
-```java
-public class Car {
-
-    private String description;
-
-    public Car(String description) {
-        this.description = description;
-    }
-
-    public void startEngine() {
-        System.out.println("Car -> startEngine");
-    }
-
-    protected void runEngine() {
-        System.out.println("Car -> runEngine");
-    }
-
-    public void drive() {
-        System.out.println("Car -> driving, type is " + getClass().getSimpleName());
-        runEngine();
-    }
-}
-
-class GasPoweredCar extends Car {
-
-    private double avgKmPerLiter;
-    private int cylinders = 6;
-
-    public GasPoweredCar(String description) {
-        super(description);
-    }
-
-    public GasPoweredCar(String description, double avgKmPerLiter, int cylinders) {
-        super(description);
-        this.avgKmPerLiter = avgKmPerLiter;
-        this.cylinders = cylinders;
-    }
-
-    @Override
-    public void startEngine() {
-        System.out.printf("Gas -> All %d cylinders are fired up, Ready!%n", cylinders);
-    }
-
-    @Override
-    protected void runEngine() {
-        System.out.printf("Gas -> usage exceeds the average: %.2f %n", avgKmPerLiter);
-    }
-}
-
-```
