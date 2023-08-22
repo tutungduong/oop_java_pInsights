@@ -71,7 +71,7 @@ There's also some important points about method overriding to keep in mind.
 ### Method Overriding vs Method Overloading
 
 <p align="center">
-<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/overriding_vs_overloading.png">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/overriding_vs_overloading.png">
 </p>
 
 | Method Overloading                                                       | Method Overriding                                                                |

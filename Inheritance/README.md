@@ -65,7 +65,7 @@ So inside a static method, we can't use the this keyword. Whenever you see a met
 <details>
 <summary><strong> Example for Static Methods</strong></summary>
 <p align="center">
-<img height="280" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/Static_methods.png">
+<img height="280" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/Static_methods.png">
 </p>
 
 </details>
@@ -101,7 +101,7 @@ public class Main{
 **When to use static or instance method in java**
 
 <p align="center">
-<img height="270" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/static_and_instance.png">
+<img height="270" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/static_and_instance.png">
 </p>
 
 ### Different POJO and The Record
@@ -199,7 +199,7 @@ In Oriented Object Programming, the computer programs are designed in such a way
 ## Type of Inheritance
 
 <p align="center">
-<img height="270" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/type_inheritance.png">
+<img height="270" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/type_inheritance.png">
 </p>
 
 ### Single Inheritance
@@ -209,7 +209,7 @@ In single inheritance, one class inherits the properties of another. It enables 
 When a class inherits another class, it is known as a single inheritance. In the example given below, Dog class inherits the Animal class, so there is the single inheritance.
 
 <p align="center">
-<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/single_Inheritance.png">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/single_Inheritance.png">
 </p>
 
 Here, Class A is your parent class and Class B is your child class which inherits the properties and behavior of the parent class
@@ -247,7 +247,7 @@ eating..
 To reduce the complexity and simplify the language, multiple inheritance is not supported in java.
 
 <p align="center">
-<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/multiple-inheritance.png">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple-inheritance.png">
 </p>
 
 **Example for Multiple Inheritance**
@@ -282,7 +282,7 @@ When a class is derived from a class which is also derived from another class, i
 When there is a chain of inheritance, it is known as multilevel inheritance. As you can see in the example given below, BabyDog class inherits the Dog class which again inherits the Animal class, so there is a multilevel inheritance.
 
 <p align="center">
-<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/multilevel-Inheritance.png">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multilevel-Inheritance.png">
 </p>
 
 If we talk about the flowchart, class B inherits the properties and behavior of class A and class C inherits the properties of class B. Here A is the parent class for B and class B is the parent class for C. So in this case class C implicitly inherits the properties and methods of class A along with Class B. That’s what is multilevel inheritance.
@@ -326,7 +326,7 @@ When a class has more than one child classes (subclasses) or in other words, mor
 When two or more classes inherits a single class, it is known as hierarchical inheritance. In the example given below, Dog and Cat classes inherits the Animal class, so there is hierarchical inheritance.
 
 <p align="center">
-<img height="200" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
+<img height="200" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
 </p>
 
 **Example for Hierarchical Inheritance**
@@ -366,7 +366,7 @@ eating...
 Hybrid inheritance is a combination of two or more types of inheritance.
 
 <p align="center">
-<img src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/hybrid_inheritance.png">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/hybrid_inheritance.png">
 </p>
 
 **Example for Hybrid Inheritance**
@@ -428,7 +428,7 @@ public class Daughter extends Father
     He is grandfather.
 ```
 
-## Aggregation
+<!-- ## Aggregation
 
 If a class have an entity reference, it is known as Aggregation
 
@@ -589,4 +589,4 @@ public class Main {
     }
 }
 
-```
+``` -->

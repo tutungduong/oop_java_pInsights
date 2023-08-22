@@ -11,7 +11,7 @@
 # Abstraction
 
 <p align="center">
-<img height="270" src="https://github.com/c0mr4dex/oop_java_pInsights/blob/main/Images/abstraction.png">
+<img height="270" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/abstraction.png">
 </p>
 
 It is the process of hiding internal implementation details from the user and providing only necessary functionality to the users. It removes all non-essential things and shows only important things to users.
