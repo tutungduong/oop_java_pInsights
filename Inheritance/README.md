@@ -1,6 +1,6 @@
 # Table of Contents
 
-1. [Class and Object](#Class-And-Object)
+1. [Class and Object](#Object-And-Class)
    - [Constructor](#Constructor)
    - [Static and Instance Method](#Static-and-instance-method)
    - [POJO and The Record](#Different-POJO-and-The-Record)
@@ -15,31 +15,51 @@
    - [This and super](#This-vs-super)
    - [Method Overriding and super](#This-vs-super)
 
-## Class And Object
+## Object and Classes
 
-#### CLASS
+Exist two main concepts in OOP: Object and Classes.
 
-A class is a user defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type. In general, class declarations can include these components, in order:
+#### Object:
 
-    Modifiers : A class can be public or has default access.
+- Instances of clases
+- Instances of clases
 
-    Class name: The name should begin with a initial letter (capitalized by convention).
+An instance is created so you can use the methods that that class defines.
 
-    Superclass(if any): The name of the class’s parent (superclass), if any, preceded by the keyword extends. A class can only extend (subclass) one parent.
-
-    Interfaces(if any): A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.
-
-    Body: The class body surrounded by braces, { }.
-
-#### OBJECT
-
-An object is an instance of a class.Technically, Class is a template which describes what state and behavior of an instance this class can have. Object implements the state and behavior in the form of variables and methods and requires some memory allocated. An object consists of:
+It is a basic unit of Object Oriented Programming and represents the real life entities. A typical Java program creates many objects, which as you know, interact by invoking methods. An object consists of:
 
     State : It is represented by attributes of an object. It also reflects the properties of an object.
 
     Behavior : It is represented by methods of an object. It also reflects the response of an object with other objects.
 
     Identity : It gives a unique name to an object and enables one object to interact with other objects.
+
+#### Class
+
+Is a template that allow to create object, containt the definition of attributes and the procedure for the class
+
+- They are used to represent entities or concepts
+- Each object created from a class is called an instance of the class
+- Has methods (Performs a task)
+- It has attributes, by convention they must be private
+- The name must begin with a capital letter
+
+<strong>Static class:</strong>
+
+- No need to create instances to call them
+- Only static methods can be called
+
+A class is a user defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type. In general, class declarations can include these components, in order:
+
+      Modifiers : A class can be public or has default access.
+
+      Class name: The name should begin with a initial letter (capitalized by convention).
+
+      Superclass(if any): The name of the class’s parent (superclass), if any, preceded by the keyword extends. A class can only extend (subclass) one parent.
+
+      Interfaces(if any): A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.
+
+      Body: The class body surrounded by braces, { }.
 
 ### CONSTRUCTOR
 
