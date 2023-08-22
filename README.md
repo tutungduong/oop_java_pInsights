@@ -888,7 +888,6 @@ Hello java
 - In this example, we have a method called printMethod, that calls super.printMethod.
 
 ```java
-package dev.project;
 
 class SupeClass{ // parent class aka super class
     public void printMethod(){
@@ -960,3 +959,36 @@ class Rectangle extends Shape{
     }
 }
 ```
+
+<!-- ## SOLID <a name="solid"></a>
+[View complete definition](https://github.com/alejoalvarez/SOLID)
+
+<p align="center">
+<img src="https://github.com/Alejo-Alvarezv/OOP/blob/master/Images/SOLID.jpg">
+</p>
+
+Five design principles intended to make software designs more understandable, flexible and maintainable.
+
+- **Single responsibility principle**
+A class should only have a single responsibility, that is, only changes to one part of the software's specification should be able to affect the specification of the class.
+
+- **Open/closed principle**
+"Software entities ... should be open for extension, but closed for modification."
+
+- **Liskov substitution principle**
+"Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program".
+
+- **Interface segregation principle**
+"Many client-specific interfaces are better than one general-purpose interface."
+
+- **Dependency inversion principle**
+One should "depend upon abstractions, [not] concretions".
+
+## Design patterns
+[View complete definition](https://github.com/Alejo-Alvarezv/DesingPatterns)
+
+<p align="center">
+<img src="https://github.com/Alejo-Alvarezv/OOP/blob/master/Images/DesignPatterns.png">
+</p>
+
+Is a general repeatable solution to a commonly occurring problem in software design. A design pattern isn't a finished design that can be transformed directly into code. It is a description or template for how to solve a problem that can be used in many different situations. -->
