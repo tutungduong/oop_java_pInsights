@@ -77,28 +77,60 @@ class GasPoweredCar extends Car {
 
 ### Method Overloading (Compile time Polymorphism)
 
-`Method overloading` means providing two or more separate methods, in a class, with the `same name`, but `different parameters`.
-
-Method return type may or may not be different, and that allows us to reuse the same method name.
-
-`Overloading` is very handy, it `reduces duplicated code`, and we don't have to remember multiple method names.
-
-We can overload static, or instance methods.
-
-To the code calling an overloaded method, it looks like a single method can be called, with different sets of arguments.
+`Method overloading` means providing two or more separate methods, in a class, with the `same name`, but `different parameters`. Method return type may or may not be different, and that allows us to reuse the same method name. To the code calling an overloaded method, it looks like a single method can be called, with different sets of arguments.
 
 In actuality, each call that's made with a different set of arguments, is calling a separate method.
 
-Java developers often refer to method overloading, as compile-time polymorphism.
-
-This means the compiler is determining the right method to call, based on the method name and argument list.
-
-Usually `overloading` happens within a `single class`.
-
-But methods can also be overloaded by subclasses.
+Java developers often refer to method overloading, as compile-time polymorphism. This means the compiler is determining the right method to call, based on the method name and argument list. Usually `overloading` happens within a `single class`. But methods can also be overloaded by subclasses.
 
 That's because, a subclass inherits one version of the method from the parent class, and then the subclass can have another overloaded version of that method.
 
+Let’s see this in action by overloading the product method in the Calculator class:
+
+```java
+class Calculator {
+
+  public double product(double x, double y) {
+    return x * y;
+  }
+
+  // Overloading the function to handle three arguments
+  public double product(double x, double y, double z) {
+    return x * y * z;
+  }
+
+  // Overloading the function to handle int
+  public int product(int x, int y){
+    return x * y;
+  }
+
+}
+
+class Demo {
+
+  public static void  main(String args[]) {
+    Calculator cal = new Calculator();
+
+    double x = 10;
+    double y = 20;
+    double z = 5;
+
+    int a = 12;
+    int b = 4;
+
+    System.out.println(cal.product(x, y));
+    System.out.println(cal.product(x, y, z));
+    System.out.println(cal.product(a, b));
+  }
+
+}
+```
+
+`Note: Methods that have no arguments and differ only in the return types cannot be overloaded since the compiler won’t be able to differentiate between their calls.`
+**Advantages of method overloading**
+One might wonder if we could simply create new methods to perform different jobs rather than overloading the same method. However, an obvious benefit is that the code becomes simple and clean. We don’t have to keep track of different methods.
+
+Polymorphism is a very important concept in object-oriented programming, and method overloading plays a vital role in its implementation.
 **Method Overloading Rules**
 
 Methods will be considered overloaded if both methods follow the following rules:

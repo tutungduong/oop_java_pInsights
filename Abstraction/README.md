@@ -163,7 +163,7 @@ public class Dog extends Mammal {
 
 - By introducing interfaces into your program, you're really introducing points of variation, at which you can plug in different implementations for that interface. -->
 
-Another way to achieve abstraction in Java, is with interfaces.
+<!-- Another way to achieve abstraction in Java, is with interfaces.
 
 The interface in Java is a mechanism to achieve abstraction. There can be only abstract methods in the Java interface, not method body. It is used to achieve abstraction and multiple inheritance in Java.
 
@@ -173,9 +173,46 @@ The interface in Java is a mechanism to achieve abstraction. There can be only a
 
 - Since Java 8, interfaces can now contain default methods, so in other words methods with implementation. The keyword `default` is used mostly for backwards compatibility. Public static methods were also introduced in Java 8.
 
-- Since Java 9, an interface can also contain private methods, commonly used when default methods share common code.
+- Since Java 9, an interface can also contain private methods, commonly used when default methods share common code. -->
 
-`Summary: The interface decouples the "what", from the "how", and is used to make different types, behave in similar ways.`
+<!-- `Summary: The interface decouples the "what", from the "how", and is used to make different types, behave in similar ways.` -->
+
+An interface is just like a class and specifies the behavior that a class must implement.
+
+An interface can be used to achieve 100% abstraction as it contains the method signatures/abstract methods(what to be done) and no implementation details (how to be done) of these methods. In this way, interfaces satisfy the definition of abstraction. The implementation techniques of the methods declared in an interface are totally up to to the classes implementing that interface.
+
+An interface can be thought of as a `contract` that a class has to fulfill while implementing an interface. According to this contract, the class that `implements` an interface has to `@Override` all the abstract methods declared in that very interface.
+
+**Rules to be followed**
+
+- An interface can have:
+
+  - `abstract` method(s)
+  - `default` method(s)
+  - `static` method(s)
+  - `private` method(s)
+  - `private static` method(s)
+  - `public static final` variable(s)
+
+- All the methods declared or implemented in an interface are by default `public` and all the variables are by default `public static final.`
+
+- Just like an `abstract` class, an `interface` cannot be instantiated.
+
+- To use an interface, a class must `implement` all of the `abstract` method(s) declared in it.
+
+- An interface cannot have constructor(s) in it.
+
+- A class cannot extend from more than one class, but it can implement any number of interfaces.
+
+- An interface can `extend` from another interface.
+
+- An interface cannot be declared `private` or `protected.`
+
+**Note:** `A class uses the keyword implements to use an interface but an interface uses the keyword extends to use another interface.`
+
+<p align="center">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/implements.png">
+</p>
 
 **Use an Interface when...**
 
@@ -224,6 +261,25 @@ class Fish implements Eatable {
     }
 }
 ```
+
+### Multiple Inheritance
+
+When a class is derived from more than a single base class, i.e. when a class has more than one immediate parent classes, it is an instance of `Multiple Inheritance. Example:`
+
+- A Hyundai Elantra IS A Car
+- A Hyundai Elantra IS A Sedan as well
+
+<p align="center">
+<img  src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple_implements.png">
+</p>
+
+**Implementation**
+
+In Java, a class can’t extend from more than one class. So the question arises, “how can we implement multiple inheritance?”
+
+The answer to the above question is `Interfaces`. In Java, multiple inheritance can be implemented using interfaces.
+
+`Note: A class can implement more than one interfaces and an interface can extend from more than one interfaces.`
 
 **Example Multiple Interface class**
 
@@ -312,7 +368,7 @@ class MyClass implements MyInterface {
 
 ```
 
-## The relationship between classes and interfaces
+<!-- ## The relationship between classes and interfaces
 
 As shown in the figure given below, a class extends another class, an interface extends another interface, but a class implements an interface.
 
@@ -435,13 +491,13 @@ Drawable d=new Rectangle();
 d.draw();
 System.out.println(Drawable.cube(3));
 }}
-```
+``` -->
 
 ## Difference between abstract class and interface
 
 - The main difference between interface and abstract class is that an interface provides an encapsulation mechanism for method protocols without forcing the user to use inheritance.
 - But there are many differences between abstract class and interface that are given below.
-
+<!-- 
 |                                                              | Abstract class            | Interface                                                |
 | ------------------------------------------------------------ | ------------------------- | -------------------------------------------------------- |
 | An instance can be created from it                           | No                        | No                                                       |
@@ -473,12 +529,20 @@ System.out.println(Drawable.cube(3));
 | Abstract think more about objects                                                                                                            | Interface think more about implementation                                                                                                                                                                               |
 
 | parameters       | Abstract class        | Interface                   |
-| ---------------- | --------------------- | --------------------------- |
+| ---------------- | --------------------- | --------------------------- | --- |
 | keyword used     | abstract              | interface                   |
 | Type of variable | static and non-static | static                      |
 | Access modifiers | All access modifiers  | Only public acces modifiers |
 | speed            | Fast                  | Slow                        |
-| When to used     | To avoid independence | For future Enhancement      |
+| When to used     | To avoid independence | For future Enhancement      | --> |
+
+| Interfaces                            | Abstract Classes                               |
+| ------------------------------------- | ---------------------------------------------- |
+| Support multiple inheritance          | Don’t support multiple inheritance             |
+| All members are public                | Can have private, protected and public members |
+| All access modifiers                  | Only public acces modifiers                    |
+| All data members are static and final | Can have non-static and non-final members too  |
+| Can’t have constructors               | Constructors can be defined                    |
 
 <!-- <p align="center">
 <img src="../Images/interface_and_abstract.png">
@@ -505,7 +569,88 @@ Simply, abstract class achieves partial abstraction (0 to 100%) whereas interfac
 
 **Example of abstract class and interface**
 
+Let’s implement the example of Elantra given at the start of the lesson. This example can be implemented using:
+
+- A base class named `Car`
+- An interface named `IsSedan`
+- An `Elantra` class derived from `Car` and implementing `IsSedan`
+
+The above illustration then becomes:
+
+<p align="center">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/interface.png">
+</p>
+
 ```java
+class Car {  // Base class
+
+  private int model;  // Common features of all cars
+  private String manufacturer;
+
+  public Car(int model, String manufacturer) {  // Constructor
+    this.model = model;
+    this.manufacturer = manufacturer;
+  }
+
+  public void printDetails() {
+
+    System.out.println("The model of " + getClass().getSimpleName() + " is: " + model);
+    System.out.println("The manufacturer of " + getClass().getSimpleName() + " is: " + manufacturer);
+  }
+
+}  // End of Car class
+
+interface IsSedan {  // Interface for sedans
+
+  int bootSpace = 420;  // Sedans have boot space
+
+  void bootSpace();    // Every sedan must implement this
+
+}  // End of IsSedan interface
+
+class Elantra extends Car implements IsSedan {  // Elantra is a Car and is a Sedan also
+
+  private String variant;    // Elantra's data member
+
+  public Elantra(int model, String variant) {  // Constructor
+    super(model, "Hyundai");  // Calling the parent constructor with alredy known manufacturer
+    this.variant = variant;
+  }
+
+  @Override
+  public void bootSpace() { // Implementation of the interface method
+    System.out.println("The bootspace of Elantra is: " + IsSedan.bootSpace +" litres");
+  }
+
+  @Override
+  public void printDetails() {  // Overriding the parent class's inherited method
+    super.printDetails();    // Calling the method from parent class
+    System.out.println("The variant of Elantra is: " + variant); // printing the data member of this class
+  }
+
+}  // End of Elantra class
+
+
+class Main {
+
+  public static void main(String[] args) {
+
+    Elantra sport = new Elantra(2019, "Sport");  //creating Sports variant Elantra
+    Elantra eco = new Elantra(2018, "Eco");      //creating Eco variant Elantra
+
+    sport.printDetails();
+    sport.bootSpace();
+
+    System.out.println();
+
+    eco.printDetails();
+    eco.bootSpace();
+  }
+
+}
+```
+
+<!-- ```java
 // Abstract class
 abstract class Animal {
     String name;
@@ -544,4 +689,4 @@ class Dolphin extends Animal implements Swimmable {
         System.out.println(name + " is swimming gracefully.");
     }
 }
-```
+``` -->

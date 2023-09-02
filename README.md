@@ -87,15 +87,41 @@ public class Person {
 
 ### `Abstraction` <a name="abstraction"></a>
 
-Abstract Classes and Methods
+Abstraction in Object-Oriented Programming refers to showing only the essential features of an object to the user and hiding the inner details to reduce complexity. It can be put this way that the user only has to know _“what an object does?”_ rather than _“how it does?”_.
 
-Objects only reveal internal mechanisms that are relevant for the use of other objects, hiding any unnecessary implementation code. This concept helps developers make changes and additions over time more easily.
+<p align="center">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/abstraction_example.png">
+</p>
 
-Data abstraction is the process of hiding certain details and showing only essential information to the user.
-Abstraction can be achieved with either abstract classes or interfaces (which you will learn more about in the next chapter).
+Let’s look into another example of abstraction. Take the Volume button on a television remote. With a click of a button, we request the T.V. to increase its volume. Let’s say the button calls the `volumeUp()` function. The T.V. responds by producing a sound larger than before. How the inner circuitry of the T.V. implements this is oblivious to us, yet we know the exposed function needed to interact with the T.V.'s volume.
 
-- **Abstract class**: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class).
-- **Abstract method**: can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
+- **Abstract class**: An`abstract class` is a class which is declared using the keyword `abstract`.
+
+**Rules to be followed**
+
+- In contrast to a concrete/normal Java method an `abstract method` does not have a body/definition i.e. it only has a declaration or method signature inside an abstract class or an interface.
+
+- An `abstract method` can be declared inside an abstract class or an interface only.
+
+- In other words, it can be said that to contain any `abstract method` in its implementation a class has to be declared as an abstract class because non-abstract classes cannot have abstract methods.
+
+- An abstract method cannot be declared private as it has to be implemented in some other class.
+
+**Abstract method**: A method with the `keyword` abstract in its declaration is known as an `abstract method`.
+
+**Rules to be followed**
+
+- An abstract class `cannot` be instantiated i.e. one cannot create an object of an abstract class.
+
+- An abstract class can have the declaration of abstract method(s) (as an abstract method’s body cannot be implemented in an abstract class) but it is not compulsory to have any.
+
+- Non-abstract/normal methods can be implemented in an `abstract class`.
+
+- To use an abstract class it needs to be `inherited from`.
+
+- The class which inherits from the abstract class must implement all the abstract methods declared in the parent abstract class.
+
+- An abstract class can have everything else as same as a normal Java class has i.e. constructor, `static` variables and methods.
 
 An abstract class can have both abstract and regular methods:
 
@@ -305,16 +331,37 @@ A class is a user defined blueprint or prototype from which objects are created.
 
 ### Method: <a name="method"></a>
 
-A method is a collection of statements that perform some specific task and return result to the caller. A method can perform some specific task without returning anything. Methods allow us to reuse the code without retyping the code. In Java, every method must be part of some class which is different from languages like C, C++ and Python.
-Methods are time savers and help us to reuse the code without retyping the code.
+Methods act as an interface between a program and the data fields of a class in the program.
+
+These methods can either alter the content of the data fields or use their values to perform a certain computation. All the useful methods should be `public`, although, some methods which do not need to be accessed from the outside could be kept private.
+
+**A method is a group of statements that performs some operations and may or may not return a result.**
+
+```java
+class Car {
+  // Public method to print speed
+  public void printSpeed(int speed) {
+    System.out.println("Speed: " + speed);
+    }
+
+}
+class Demo {
+
+  public static void main(String args[]) {
+    Car car = new Car();
+    car.printSpeed(100); // calling public method
+  }
+
+}
+```
 
 Method Declaration: In general, method declarations has six components:
 
 - **Access Modifier**: Defines access type of the method i.e. from where it can be accessed in your application. In Java, there 4 type of the access specifiers.<br>
-  - **public**: accessible in all class in your application.<br>
-  - **protected**: accessible within the package in which it is defined and in its subclass(es)(including subclasses declared outside the package)<br>
-  - **private**: accessible only within the class in which it is defined.<br>
-  - **default** (declared/defined without using any modifier): accessible within same class and package within which its class is defined.<br>
+  - **public**:This tag indicates that the members can be directly accessed by anything which is in the same scope as the class object. **Member functions are usually** public as they provide the interface through which the application can communicate with our private members. Public members can be declared using the keyword `public`.<br>
+  - **protected**: The protected category is unique. The access level to the protected members lies somewhere between private and public. The primary use of the protected tag can be found when using **inheritance**, which is the process of creating classes out of other classes.<br>
+  - **private**: A private member cannot be accessed directly from outside the class. The aim is to keep it hidden from the users and other classes. It is a popular practice to keep the data members private since we do not want anyone manipulating our data directly. We can make members private using the keyword `private`.<br>
+  - **default**: If we do not mention any access modifier, then it is considered to be default access. The default access is similar to the `protected`. It also has package-level access, but it also applies to inherited classes as well, unlike `protected`. So, you can say that its access is more limited.<br>
 - **The return type**: The data type of the value returned by the method or void if does not return a value.
 - **Method Name**: the rules for field names apply to method names as well, but the convention is a little different.
 - **Parameter list**: Comma separated list of the input parameters are defined, preceded with their data type, within the enclosed parenthesis. If there are no parameters, you must use empty parentheses ().
@@ -481,7 +528,7 @@ public class Account { // This is the class declaration
 <img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/access_modified.png">
 </p>
 
-**THE DEFAULT CONSTRUCTOR**
+**The default constructor**
 
 If a class contains no constructor declarations, then a default constructor is implicitly declared.
 
@@ -501,20 +548,25 @@ public class Customer {
     public Customer() // Default Constructor {
         this("Nobody", "nobody@nowhere.com");
     }
+```
+
+**Parameterized constructor**
+
+The default constructor is the most basic form of a constructor. In a default constructor, we define the default values for the data members of the class. Hence, the constructor creates an object in which the data members are initialized to their default values.
+
+This will make sense when we look at the code below. Here, we have a Date class, with its default constructor, and we’ll create an object out of it in our main():
+
+```java
+    public class Customer {
+
+    private String name;
+    private double creditLimit;
+    private String email;
 
     public Customer(String name, String email) // Parameterized Constructor
     {
         this(name, 1000, email);
     }
-
-    public Customer(String name, double creditLimit, String email)  //Constructor Overloading
-    {
-        this.name = name;
-        this.creditLimit = creditLimit;
-        this.email = email;
-    }
-}
-
 ```
 
 ### static <a name="static"></a>

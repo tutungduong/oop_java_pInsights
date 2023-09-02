@@ -1,24 +1,22 @@
+## Data hiding
+
+Data hiding is an essential concept in object-oriented programming. In simple terms, it can be defined as masking a class's internal operations and only providing an interface through which other entities can interact with the class without being aware of what is happening within.
+
+The goal is to implement classes in a way that prevents unauthorized access to or modification of the original contents of a class by its instances (or objects). The underlying algorithms of one class need not be known to another class. The two classes can still communicate, though.
+
 ## Encapsulation
 
 <p align="center">
 <img height="270" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/encapsulation.png">
 </p>
 
-Encapsulation is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates.Other way to think about encapsulation is, it is a protective shield that prevents the data from being accessed by the code outside this shield.
+Encapsulation is a fundamental programming technique used to achieve data hiding in OOP. Encapsulation in OOP refers to binding data and the methods to manipulate that data together in a single unit—class.
 
-Technically in encapsulation, the variables or data of a class is hidden from any other class and can be accessed only through any member function of own class in which they are declared.
-As in encapsulation, the data in a class is hidden from other classes, so it is also known as **data-hiding**.
-Encapsulation can be achieved by: Declaring all the variables in the class as private and writing public methods in the class to set and get the values of variables.
+Encapsulation is usually done to hide the state and representation of an object from the outside. A class can be thought of as a capsule with methods and attributes inside it.
 
-The process of binding data and corresponding methods (behavior) together into a single unit is called encapsulation in Java.
+When encapsulating classes, a good convention is to declare all variables of a class private. This will restrict direct access by the code outside that class.
 
-In other words, encapsulation is a programming technique that binds the class members (variables and methods) together and prevents them from being accessed by other classes, thereby we can keep variables and methods safes from outside interference and misuse.
-
-Every Java class is an example of encapsulation because we write everything within the class only that binds variables and methods together and hides their complexity from other classes.
-
-In the encapsulation technique, we declare the fields as private in the class to prevent other classes from accessing them directly. The required encapsulated data can be accessed by using public Java getter and setter method.
-
-If the field is declared private in the class then it cannot be accessed by anyone from outside the class and hides the field within the class. Therefore, it is also called data hiding.
+At this point, a question can be raised. If the methods and variables are encapsulated in a class, how can they be used outside that class? The answer to this is simple. One has to implement public methods to let the outside world communicate with this class. These methods are called getters and setters. We can also implement other custom methods.
 
 ## Encapsulation in java
 
