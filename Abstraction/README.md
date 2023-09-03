@@ -266,8 +266,8 @@ class Fish implements Eatable {
 
 When a class is derived from more than a single base class, i.e. when a class has more than one immediate parent classes, it is an instance of `Multiple Inheritance. Example:`
 
-- A Hyundai Elantra IS A Car
-- A Hyundai Elantra IS A Sedan as well
+- A `Hyundai` Elantra IS A `Car`
+- A `Hyundai` Elantra IS A `Sedan` as well
 
 <p align="center">
 <img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple_implements.png">
@@ -528,14 +528,13 @@ System.out.println(Drawable.cube(3));
 | abstract classes are more used for base type objects. It is like the parent in the hierarchy in a set of objects that share the same parent. | The interfaces are known as a contract. This is because they force you to implement their methods, which ensures all business logic that every object that implements it will have access to the methods defined in it. |
 | Abstract think more about objects                                                                                                            | Interface think more about implementation                                                                                                                                                                               |
 
-| parameters       | Abstract class        | Interface                   |
-| ---------------- | --------------------- | --------------------------- | --- |
-| keyword used     | abstract              | interface                   |
-| Type of variable | static and non-static | static                      |
-| Access modifiers | All access modifiers  | Only public acces modifiers |
-| speed            | Fast                  | Slow                        |
-| When to used     | To avoid independence | For future Enhancement      | --> |
-
+| parameters                            | Abstract class                                 | Interface                   |
+| ------------------------------------- | ---------------------------------------------- | --------------------------- | --- |
+| keyword used                          | abstract                                       | interface                   |
+| Type of variable                      | static and non-static                          | static                      |
+| Access modifiers                      | All access modifiers                           | Only public acces modifiers |
+| speed                                 | Fast                                           | Slow                        |
+| When to used                          | To avoid independence                          | For future Enhancement      | --> |
 | Interfaces                            | Abstract Classes                               |
 | ------------------------------------- | ---------------------------------------------- |
 | Support multiple inheritance          | Don’t support multiple inheritance             |

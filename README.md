@@ -262,7 +262,7 @@ Cohesion refers to the level of a component which performs a single well-defined
 
 ### Association <a name="association"></a>
 
-Association represents the relationship between the objects. Here, one object can be associated with one object or many objects. There can be four types of association between the objects:
+In object-oriented programming, association is the common term used for both the `has-a` and `part-of` relationships but is not limited to these. When we say that two objects are in an association relationship, this is a generic statement which means that we don’t worry about the lifetime dependency between the objects. Here, one object can be associated with one object or many objects. There can be four types of association between the objects:
 
 - One to One
 - One to Many
@@ -275,12 +275,172 @@ Association can be undirectional or bidirectional.
 
 ### Aggregation <a name="aggregation"></a>
 
-Aggregation is a way to achieve Association. Aggregation represents the relationship where one object contains other objects as a part of its state. It represents the weak relationship between objects. It is also termed as a has-a relationship in Java. Like, inheritance represents the is-a relationship. It is another way to reuse objects.
+Aggregation follows the has-A model. This creates a parent-child relationship between two classes, with one class owning the object of another.
+
+#### Independent Lifetimes
+
+`In aggregation, the lifetime of the owned object does not depend on the lifetime of the owner.`
+
+The owner object could get deleted, but the owned object can continue to exist in the program. In aggregation, the parent only contains a reference to the child, which removes the child’s dependency.
+
+<p align="center">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/aggregation.png">
+</p>
+
+Let’s take the example of people and their country of origin. Each person is associated with a country, but the country can exist without that person:
+
+```java
+class Country {
+
+    private String name;
+    private int population;
+
+    public Country(String n, int p) {
+      name = n;
+      population = p;
+    }
+    public String getName() {
+      return name;
+    }
+
+}
+
+class Person {
+
+    private String name;
+    private Country country; // An instance of Country class
+
+    public Person(String n, Country c) {
+      name = n;
+      country = c;
+    }
+
+    public void printDetails() {
+      System.out.println("Name: " + name);
+      System.out.println("Country: " + country.getName());
+    }
+
+}
+
+class Main {
+
+  public static void main(String args[]) {
+    Country country = new Country("Utopia", 1);
+    {
+      Person user = new Person("Darth Vader", country);
+      user.printDetails();
+    }
+    // The user object's lifetime is over
+
+    System.out.println(country.getName()); // The country object still exists!
+  }
+
+}
+```
+
+As we can see, the country object lives on even after the user goes out of scope. This creates a loosely coupled relationship between the two classes.
 
 ### Composition <a name="composition"></a>
 
-The composition is also a way to achieve Association. The composition represents the relationship where one object contains other objects as a part of its state. There is a strong relationship between the containing object and the dependent object. It is the state where containing objects do not have an independent existence. If you delete the parent object, all the child objects will be deleted automatically.
+Composition is the practice of creating other class objects in your class. In such a scenario, the class which creates the object of the other class is known as the owner and is responsible for the lifetime of that object.
 
+Composition relationships are Part-of relationships where the part must constitute part of the whole object. We can achieve composition by adding smaller parts of other classes to make a complex unit.
+
+A`car` is composed of an engine, tires, and doors. In this case, a `Car` owns these objects so a `Car` is an Owner class and `tires`,`doors` and `engine` classes are Owned classes.
+
+<p align="center">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/composition_rd.png">
+</p>
+
+```java
+class Engine {
+
+  private int capacity;
+
+  public Engine(){
+    capacity = 0;
+  }
+
+  public Engine(int cap) {
+    capacity = cap;
+  }
+
+  public void engineDetails() {
+    System.out.println("Engine details: " + capacity);
+  }
+
+}
+
+class Tires {
+
+  private int noOfTires;
+
+  public Tires() {
+    noOfTires = 0;
+  }
+
+  public Tires(int nt) {
+    noOfTires = nt;
+  }
+
+  public void tireDetails() {
+    System.out.println("Number of tyres: " +  noOfTires);
+  }
+
+}
+
+class Doors {
+
+  private int noOfDoors;
+
+  public Doors() {
+    noOfDoors = 0;
+  }
+
+  public Doors(int nod) {
+    noOfDoors = nod;
+  }
+
+  public void doorDetails() {
+    System.out.println("Number of Doors: " + noOfDoors);
+  }
+
+}
+
+class Car {
+
+  private Engine eObj;
+  private Tires tObj;
+  private Doors dObj;
+  private String color;
+
+  public Car(String col, int cap, int nt, int nod) {
+    this.eObj = new Engine(cap);;
+    this.tObj = new Tires(nt);;
+    this.dObj = new Doors(nod);
+
+    color = col;
+  }
+
+  public void carDetail() {
+    eObj.engineDetails();
+    tObj.tireDetails();
+    dObj.doorDetails();
+    System.out.println("Car color: " + color);
+  }
+
+}
+
+class Main {
+
+  public static void main(String[] args) {
+    Car cObj = new Car("Black", 1600, 4, 4);
+    cObj.carDetail();
+  }
+}
+```
+
+We have created a `Car` class which contains the objects of `Engine`, `Tires` and `Doors` classes. The `Car` class is responsible for the lifetime of the owned objects, i.e., when the Car dies, so does the tires, engine and doors.
 [See more about Composition](https://github.com/tutungduong/oop_java_pInsights/blob/main/Inheritance)
 
 ## Object and Classes <a name="objects-classes"></a>

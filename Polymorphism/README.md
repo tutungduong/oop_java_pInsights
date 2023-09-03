@@ -14,14 +14,6 @@ For example, take the `Animal` class. There are many different animals, e.g., li
 <img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/polymorphism.png">
 </p>
 
-### Types of polymorphism
-
-There are two types of polymorphism: dynamic polymorphism and static polymorphism, as shown in the figure below.
-
-<p align="center">
-<img height="250px" src="../Images/svgviewer-output.svg">
-</p>
-
 **Polymorphism in action**
 
 That was polymorphism in action.
@@ -89,7 +81,122 @@ class GasPoweredCar extends Car {
 
 ```
 
-## Method Overloading and Overriding
+### Types of polymorphism
+
+There are two types of polymorphism: dynamic polymorphism and static polymorphism, as shown in the figure below.
+
+<p align="center">
+<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/type_polymorphism.svg">
+</p>
+
+#### Dynamic polymorphism
+
+**Dynamic polymorphism** is the mechanism that defines the methods with the same name, return type, and parameters in the base class and derived classes. Hence, the call to an overridden method is decided at runtime. That is why dynamic polymorphism is also known as **runtime polymorphism**. It is achieved by method overriding.
+
+#### Method overriding
+
+In object-oriented programming, if a subclass provides a specific implementation of a method that had already been defined in one of its parent classes, it is known as method overriding.
+
+Suppose we have a parent class, Animal, with its subclass, Lion. Below is the implementation of two functions with the same name in each class to check method overriding behavior.
+
+```java
+class Animal {
+	public void printAnimal() {
+		System.out.print("I am from the Animal class\n");
+	}
+	void printAnimalTwo() {
+		System.out.print("I am from the Animal class\n");
+	}
+}
+
+class Lion extends Animal {
+	// method overriding
+	public void printAnimal() {
+		System.out.print("I am from the Lion class\n");
+	}
+}
+
+public class main {
+	public static void main(String[] args) {
+		Animal animal;
+		Lion lion = new Lion();
+		animal = lion;
+
+		animal.printAnimal();
+		animal.printAnimalTwo();
+	}
+}
+
+```
+
+#### Static polymorphism
+
+Static polymorphism is also known as compile-time polymorphism, and it is achieved by method overloading or operator overloading.
+
+#### Method overloading
+
+Methods are said to be **overloaded** if a class has more than one method with the same name, but either the number of arguments is different, or the type of arguments is different. We have implemented method overloading using two functions with the same name but with different numbers of arguments. You can see this in the implementation below.
+
+```java
+class Calculator {
+
+  int add(int num1, int num2) {
+    return num1 + num2;
+  }
+
+  int add(int num1, int num2, int num3) {
+    return num1 + num2 + num3;
+  }
+
+  public static void main(String args[]) {
+
+    Calculator obj = new Calculator();
+    System.out.println("10 + 20 = " + obj.add(10, 20));
+    System.out.println("10 + 20 + 30 = " + obj.add(10, 20, 30));
+  }
+
+}
+```
+
+#### Operator overloading (Only Java language is not used)
+
+**Operators** can be overloaded to operate in a certain user-defined way. Its corresponding method is invoked to perform its predefined function whenever an operator is used. For example, when the `+` operator is called, it invokes the special function, `add`, but this operator acts differently for different data types. The `+` operator adds the numbers when it is used between two `int` data types and merges two strings when used between `string` data types.
+
+Let’s look at the implementation below, where we’ve overloaded the + operator to add complex numbers instead of simply adding two real numbers.
+
+```c++
+#include<iostream>
+using namespace std;
+
+class ComplexNumber {
+private:
+	int real, imaginary;
+public:
+	// Constructor
+	ComplexNumber(int r = 0, int i = 0) {real = r; imaginary = i;}
+
+	// Overloading function for + operator
+	ComplexNumber operator + (ComplexNumber const &c) {
+		ComplexNumber result;
+		result.real = real + c.real;
+		result.imaginary = imaginary + c.imaginary;
+		return result;
+	}
+
+	// display results
+	void display() {
+		cout << "( " << real << " + " << imaginary << " i )" << '\n';
+	}
+};
+
+int main() {
+	ComplexNumber c1(11, 5), c2(2, 6);
+	ComplexNumber c3 = c1 + c2;
+	c3.display();
+}
+```
+
+<!-- ## Method Overloading and Overriding
 
 ### Method Overloading (Compile time Polymorphism)
 
@@ -189,19 +296,29 @@ There's also some important points about method overriding to keep in mind.
 - Only `inherited methods` can be overridden, in other words, methods can be overridden only in child classes.
 - Constructors and private methods cannot be overridden.
   Methods that are final cannot be overridden.
-- A subclass can use super.methodName() to call the superclass version of an overridden method.
+- A subclass can use super.methodName() to call the superclass version of an overridden method. -->
 
-### Method Overriding vs Method Overloading
+### Method Overloading & Method Overriding
 
 <p align="center">
 <img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/overriding_vs_overloading.png">
 </p>
 
-| Method Overloading                                                       | Method Overriding                                                                |
+<!-- | Method Overloading                                                       | Method Overriding                                                                |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
 | Provides functionality to reuse a method name with different parameters. | Used to override a behavior which the class has inherited from the parent class. |
 | Usually in a single class but may also be used in a child class.         | `Always in two classes` that have a child-parent or IS-A relationship.           |
 | `Must have` different parameters                                         | `Must have` the same parameters and same name.                                   |
 | May have different return types.                                         | `Must have` the same return type or covariant return type(child class).          |
 | May have different access modifiers(private, protected, public).         | `Must NOT` have a lower modifier but may have a higher modifier                  |
-| May throw different exceptions.                                          | `Must NOT` throw a new or broader checked exception.                             |
+| May throw different exceptions.                                          | `Must NOT` throw a new or broader checked exception.                             | -->
+
+| Method Overloading                                                          | Method Overriding                                                                                   |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Overloading happens at compile time.                                        | Overriding happens at runtime.                                                                      |
+| Gives better performance because the binding is being done at compile time. | Gives less performance because the binding is being done at run time.                               |
+| Private and final methods can be overloaded.                                | Private and final methods can not be overridden.                                                    |
+| Return type of method does not matter in case of method overloading.        | Return type of method must be the same in the case of overriding.                                   |
+| Arguments must be different in the case of overloading.                     | Arguments must be the same in the case of overriding.                                               |
+| It is being done in the same class.                                         | Base and derived classes are required here.                                                         |
+| Mostly used to increase the readability of the code.                        | Mostly used to provide the implementation of the method that is already provided by its base class. |

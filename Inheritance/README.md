@@ -6,14 +6,9 @@ Static methods are declared using a static modifier. Static methods can't access
 
 So inside a static method, we can't use the this keyword. Whenever you see a method that doesn't use instance variables, that method should probably be declared as a static method. For example, main is a static method, and it's called by the Java virtual machine when it starts the Java application.
 
-<details>
-<summary><strong> Example for Static Methods</strong></summary>
 <p align="center">
 <img height="280" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/Static_methods.png">
 </p>
-
-</details>
-<br>
 
 **Instance Methods**
 
@@ -200,11 +195,11 @@ When a class is derived from such a class which itself is derived from another c
 
 Let’s implement the three classes illustrated above:
 
-A `Car` IS A `Vehicle`
-A `Prius` IS A `Car`
+- A `Car` IS A `Vehicle`.
+- A `Prius` IS A `Car`.
 
 <p align="center">
-<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multilevel-Inheritance.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multilevel_inheritance.png">
 </p>
 
 **Example for Multi-level Inheritance**
@@ -253,8 +248,8 @@ class Main {
 
 When more than one classes inherit from the same class, it is referred to as hierarchical inheritance. In hierarchical inheritance, more than one classes extend, as per the requirement of the design, from the same base class. The common attributes of these child classes are implemented inside the base class.
 
-A `Car` IS A `Vehicle`
-A `Truck` IS A `Vehicle`
+- A `Car` IS A `Vehicle`.
+- A `Truck` IS A `Vehicle`.
 
 <p align="center">
 <img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
@@ -301,11 +296,11 @@ class Main {
 
 When a class is derived from more than one base class, i.e. when a class has more than one immediate parent classes, this type of inheritance is called Multiple Inheritance.
 
-A Hyundai `Elantra` IS A `Car`.
-A Hyundai `Elantra` IS A `Sedan` also.
+- A Hyundai `Elantra` IS A `Car`.
+- A Hyundai `Elantra` IS A `Sedan` also.
 
 <p align="center">
-<img height="200" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple-inheritance.png">
+<img height="200" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple_inheritance.png">
 </p>
 
 **Example for Multiple Inheritance**
