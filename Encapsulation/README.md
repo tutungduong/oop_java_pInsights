@@ -7,7 +7,7 @@ The goal is to implement classes in a way that prevents unauthorized access to o
 ## Encapsulation
 
 <p align="center">
-<img height="270" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/encapsulation.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/encapsulation.png">
 </p>
 
 Encapsulation is a fundamental programming technique used to achieve data hiding in OOP. Encapsulation in OOP refers to binding data and the methods to manipulate that data together in a single unit—class.

@@ -90,7 +90,7 @@ public class Person {
 Abstraction in Object-Oriented Programming refers to showing only the essential features of an object to the user and hiding the inner details to reduce complexity. It can be put this way that the user only has to know _“what an object does?”_ rather than _“how it does?”_.
 
 <p align="center">
-<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/abstraction_example.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/abstraction_example.png">
 </p>
 
 Let’s look into another example of abstraction. Take the Volume button on a television remote. With a click of a button, we request the T.V. to increase its volume. Let’s say the button calls the `volumeUp()` function. The T.V. responds by producing a sound larger than before. How the inner circuitry of the T.V. implements this is oblivious to us, yet we know the exposed function needed to interact with the T.V.'s volume.
@@ -246,7 +246,7 @@ class Main {
 }
 ```
 
-**Why And When To Use "Inheritance" and "Polymorphism"?**
+**Why And When To Use "Polymorphism"?**
 
 It is useful for code reusability: reuse attributes and methods of an existing class when you create a new class.
 
@@ -935,38 +935,101 @@ Hello java
 
 ### super <a name="super"></a>
 
-- The keyword super, is commonly used with method overriding, when we call a method with the same name, from the parent class. .
+**What is the super keyword?**
 
-- In this example, we have a method called printMethod, that calls super.printMethod.
+`this` keyword in Java is used to refer to the instance of the current class.
+
+In a similar fashion, the **super** keyword in Java is used to refer to the SuperClass members from inside the immediate Subclass. The use of `super` comes into play when we implement inheritance.
+
+**Use cases of the super keyword**
+
+The super keyword is used in three major contexts:
+
+**Accessing parent class fields**
+
+Consider the fields named as fuelCap defined inside a Vehicle class to keep track of the fuel capacity of a vehicle. Another class named as Car extends from this Vehicle class. We declare a field inside the Car class with the same name i.e. fuelCap but different value. Now if we want to refer to the fuelCap field of the SuperClass inside the Subclass, we will then have to use the super keyword.
+
+Let’s understand this using a bit of code.
 
 ```java
+class Vehicle { //Base class vehicle
 
-class SupeClass{ // parent class aka super class
-    public void printMethod(){
-        System.out.println("Printed in SuperClass.");
-    }
+  int fuelCap = 90; //fuelCap field inside SuperClass
+
 }
 
-class SubClass extends SupeClass { // subclass aka child class
-    // overrides methods from the parent class
-    @Override
-    public void printMethod() {
-        super.printMethod();
-        System.out.println("Printed is Subclass."); // call the method in the SuperClass (parent)
-    }
+
+class Car extends Vehicle { // sub class Car extending from Vehicle
+
+  int fuelCap = 50; //fuelCap field inside SubClass
+
+  public void display() {
+    //accessing the field of parent class using super*/
+    System.out.println("Fuel Capacity from the Vehicle class: " + super.fuelCap);
+    //without using super the field of current class shadows the field of parant class*/
+    System.out.println("Fuel Capacity from the Car class: " + fuelCap);
+
+  }
+
 }
 
-class MainClass {
-    public static void main(String[] args) {
-        SubClass s = new SubClass();
-        s.printMethod();
-    }
-}
+class Main {
 
-// RESULT
-Printed in SuperClass.
-Printed is Subclass.
+  public static void main(String[] args) {
+    Car corolla = new Car();
+    corolla.display();
+  }
+
+}
 ```
+
+**Calling a parent class method**
+
+Just like the fields, super is also used with the methods. Whenever a SuperClass and the immediate SubClass have any methods with the same name we use super to access the methods from the SuperClass inside the SubClass.
+
+Let’s go through an example:
+
+```java
+class Vehicle {          //Base class vehicle
+
+  public void display() {   //display method inside SuperClass
+    System.out.println("I am from the Vehicle Class");
+  }
+
+}
+
+class Car extends Vehicle { // sub class Car extending from Vehicle
+
+  public void display() { //display method inside SubClass
+    System.out.println("I am from the Car Class");
+  }
+
+  public void printOut(){
+    System.out.println("The display() call with super:");
+    super.display();  //calling the display() of Vehicle(SuperClass)
+    System.out.println("The display() call without super:");
+    display();        //calling the display() of the Car(SubClass)
+  }
+
+}
+
+class Main {
+
+  public static void main(String[] args) {
+    Car corolla = new Car();
+    corolla.printOut();
+  }
+
+}
+```
+
+**Using with constructors**
+
+Another very important use of the keyword `super` is to call the constructor of the SuperClass from inside of the constructor of the SubClass.
+
+**Important Note:** `When you create an Object of a SubClass type at the same time, an Object of SuperClass type is created by calling implicitly the constructor of SuperClass.`
+
+**Note: In a constructor we can include a call to super() or this() but not both. Also, these calls can only be used inside the constructors.**
 
 **Comparing Both Examples**
 

@@ -146,52 +146,166 @@ In Oriented Object Programming, the computer programs are designed in such a way
 <img height="270" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/type_inheritance.png">
 </p>
 
-### Single Inheritance
+Based upon superclasses and subclasses, there are the following five types of inheritance in general:
 
-In single inheritance, one class inherits the properties of another. It enables a derived class to inherit the properties and behavior from a single parent class. This will, in turn, enable code reusability as well as add new features to the existing code.
+1. [Single](#single)
+2. [Multi-level](#multi)
+3. [Hierarchical](#hierarchical)
+4. [Multiple](#multiple)
+5. [Hybrid](#hybrid)
 
-When a class inherits another class, it is known as a single inheritance. In the example given below, Dog class inherits the Animal class, so there is the single inheritance.
+### Single Inheritance <a name="single"></a>
+
+In single inheritance, there is only a single class extending from another class. We can take the example of the `Vehicle` class (Super class) and the `Car` class (Sub class). Let’s implement these classes below:
 
 <p align="center">
-<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/single_Inheritance.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/single_Inheritance.png">
 </p>
-
-Here, Class A is your parent class and Class B is your child class which inherits the properties and behavior of the parent class
 
 **Example for Single Inheritance**
 
 ```java
-class Animal{
-    void eat(){
-        System.out.println("eating...");
-    }
+class Vehicle {          //Base Vehicle class
+
+  private int topSpeed;
+  public void setTopSpeed(int speed) {
+    this.topSpeed=speed;
+    System.out.println("The top speed is set to: "+ topSpeed);
+  }
+
 }
 
-class Dog extends Animal{
-    void bark(){
-        System.out.println("barking...");
-    }
+class Car extends Vehicle { // sub class Car extending from Vehicle
+
+  public void openTrunk() {
+    System.out.println("The Car trunk is Open Now");
+  }
+
 }
 
-class Main{
-    public static void main(String args[]){
-        Dog d=new Dog();
-        d.bark();
-        d.eat();
-    }
-}
+class Main {
 
-// RESULT
-barking...
-eating..
+  public static void main(String[] args) {
+    Car corolla = new Car();
+    corolla.setTopSpeed(220);
+    corolla.openTrunk();
+  }
+
+}
 ```
 
-### Multiple Inheritance
+### Multiple Inheritance <a name="multi"></a>
 
-To reduce the complexity and simplify the language, multiple inheritance is not supported in java.
+When a class is derived from such a class which itself is derived from another class, this type of inheritance is called Multilevel Inheritance. Classes can be extended to any further levels as per the requirement of the model.
+
+Let’s implement the three classes illustrated above:
+
+A `Car` IS A `Vehicle`
+A `Prius` IS A `Car`
 
 <p align="center">
-<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple-inheritance.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multilevel-Inheritance.png">
+</p>
+
+**Example for Multi-level Inheritance**
+
+```java
+class Vehicle {          //Base Vehicle class
+
+  private int topSpeed;
+
+  public void setTopSpeed(int speed) {
+    this.topSpeed=speed;
+    System.out.println("The top speed is set to: "+ topSpeed);
+  }
+
+}
+
+class Car extends Vehicle { // Derived from Vehicle Base for Prius
+
+  public void openTrunk() {
+    System.out.println("The Car trunk is Open Now!");
+  }
+
+}
+
+class Prius extends Car {// Derived from Prius & can be base to any further class
+
+  public void turnOnHybrid() {
+    System.out.println("The Hybrid mode is turned on!");
+  }
+
+}
+
+class Main {
+
+  public static void main(String[] args) {
+    Prius priusPrime = new Prius();
+    priusPrime.setTopSpeed(220);
+    priusPrime.openTrunk();
+    priusPrime.turnOnHybrid();
+  }
+
+}
+```
+
+### Hierarchical Inheritance <a name="hierarchical"></a>
+
+When more than one classes inherit from the same class, it is referred to as hierarchical inheritance. In hierarchical inheritance, more than one classes extend, as per the requirement of the design, from the same base class. The common attributes of these child classes are implemented inside the base class.
+
+A `Car` IS A `Vehicle`
+A `Truck` IS A `Vehicle`
+
+<p align="center">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
+</p>
+
+**Example for Hierarchical Inheritance**
+
+```java
+class Vehicle {          //Base Vehicle class
+
+  private int topSpeed;
+
+  public void setTopSpeed(int speed) {
+    this.topSpeed=speed;
+    System.out.println("The top speed of "+getClass().getSimpleName()+" is set to: "+ topSpeed);
+  }
+
+}
+
+class Car extends Vehicle { // Derived from Vehicle Base for Prius
+
+  //implementation of Car class
+}
+
+class Truck extends Vehicle {// Derived from Prius can be base to any further class
+
+  //implementation of Truck class
+}
+
+class Main {
+
+  public static void main(String[] args) {
+    Car corolla = new Car();
+    corolla.setTopSpeed(220);
+
+    Truck volvo = new Truck();
+    volvo.setTopSpeed(120);
+  }
+
+}
+```
+
+### Multiple Inheritance <a name="multiple"></a>
+
+When a class is derived from more than one base class, i.e. when a class has more than one immediate parent classes, this type of inheritance is called Multiple Inheritance.
+
+A Hyundai `Elantra` IS A `Car`.
+A Hyundai `Elantra` IS A `Sedan` also.
+
+<p align="center">
+<img height="200" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple-inheritance.png">
 </p>
 
 **Example for Multiple Inheritance**
@@ -219,98 +333,16 @@ class C extends A,B{
 compile time error
 ```
 
-### Multilevel Inheritance
+### Hybrid Inheritance <a name="hybrid"></a>
 
-When a class is derived from a class which is also derived from another class, i.e. a class having more than one parent class but at different levels, such type of inheritance is called Multilevel Inheritance.
+A type of inheritance which is a combination of `Multiple` and `Multi-level` inheritance is called hybrid inheritance.
 
-When there is a chain of inheritance, it is known as multilevel inheritance. As you can see in the example given below, BabyDog class inherits the Dog class which again inherits the Animal class, so there is a multilevel inheritance.
-
-<p align="center">
-<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multilevel-Inheritance.png">
-</p>
-
-If we talk about the flowchart, class B inherits the properties and behavior of class A and class C inherits the properties of class B. Here A is the parent class for B and class B is the parent class for C. So in this case class C implicitly inherits the properties and methods of class A along with Class B. That’s what is multilevel inheritance.
-
-**Example for Multilevel Inheritance**
-
-```java
-class Animal{
-    void eat(){
-        System.out.println("eating...");
-    }
-}
-
-class Dog extends Animal{
-    void bark(){System.out.println("barking...");}
-}
-
-class BabyDog extends Dog{
-    void weep(){System.out.println("weeping...");}
-}
-
-public class Main{
-    public static void main(String args[]){
-        BabyDog d=new BabyDog();
-        d.weep();
-        d.bark();
-        d.eat();
-    }
-}
-
-//RESULT
-weeping...
-barking...
-eating...
-```
-
-### Hierarchical Inheritance
-
-When a class has more than one child classes (subclasses) or in other words, more than one child classes have the same parent class
-
-When two or more classes inherits a single class, it is known as hierarchical inheritance. In the example given below, Dog and Cat classes inherits the Animal class, so there is hierarchical inheritance.
+A combustion engine is an `engine`
+An electric motors engine is an `engine`
+A `Hybrid` engine combines both combustion engine and electric motors.
 
 <p align="center">
-<img height="200" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/hierarchical_inheritance.png">
-</p>
-
-**Example for Hierarchical Inheritance**
-
-```java
-class Animal{
-    void eat(){
-        System.out.println("eating...");
-    }
-}
-class Dog extends Animal{
-    void bark(){
-        System.out.println("barking...");
-    }
-}
-class Cat extends Animal{
-    void meow(){
-        System.out.println("meowing...");
-    }
-}
-public class Main{
-    public static void main(String args[]){
-    Cat c=new Cat();
-    c.meow();
-    c.eat();
-    //c.bark();//Compile Time Error
-    }
-}
-
-//RESULT
-meowing...
-eating...
-```
-
-### Hybrid Inheritance
-
-Hybrid inheritance is a combination of two or more types of inheritance.
-
-<p align="center">
-<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/hybrid_inheritance.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/hybrid_inheritance.png">
 </p>
 
 **Example for Hybrid Inheritance**
@@ -371,6 +403,17 @@ public class Daughter extends Father
     He is father.
     He is grandfather.
 ```
+
+**Note:** `In Java, Multiple and Hybrid inheritance are applicable using interfaces only.`
+
+**Advantages of inheritance**
+
+| Advantages        | Description                                                                                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Reusability       | We don’t need to duplicate methods inside the child classes that also occur in the parent classes.                                                                                         |
+| Code modification | Ensures that all changes are localized and inconsistencies are avoided.                                                                                                                    |
+| Extensibility     | We can extend the base class as per the requirements of the derived class. It provides an easy way to upgrade or enhance specific parts of a product without changing the core attributes. |
+| Data hiding       | A base class can keep some data private so that the derived class cannot alter it. This concept is called encapsulation.                                                                   |
 
 <!-- ## Aggregation
 

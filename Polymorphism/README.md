@@ -1,10 +1,26 @@
 ## Polymorphism
 
-- Polymorphism lets us write code to call a method, but at runtime, this method's behavior can be different, for different objects.
+<!-- - Polymorphism lets us write code to call a method, but at runtime, this method's behavior can be different, for different objects.
 - This means the behavior that occurs, while the program is executing, depends on the runtime type of the object.
 - And the runtime type, might be different from the declared type in the code.
 - The declared type has to have some kind of relationship to the runtime type, and inheritance is one way to establish this relationship.
-- There are other ways, but in this here, we'll talk about how to use inheritance, to support polymorphism.
+- There are other ways, but in this here, we'll talk about how to use inheritance, to support polymorphism. -->
+
+The word **polymorphism** is a combination of two Greek words, “poly” meaning many, and “morph” meaning forms. In programming, polymorphism is a phenomenon that allows an object to have several different forms and behaviors.
+
+For example, take the `Animal` class. There are many different animals, e.g., lion, deer, dog, and crocodile, etc. So, they are all animals, but their properties are different. The animal class can have a method, `makeNoise`. Its implementation should be different for a lion, deer, or any other animal as they all have different noises. This is called polymorphism.
+
+<p align="center">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/polymorphism.png">
+</p>
+
+### Types of polymorphism
+
+There are two types of polymorphism: dynamic polymorphism and static polymorphism, as shown in the figure below.
+
+<p align="center">
+<img height="250px" src="../Images/svgviewer-output.svg">
+</p>
 
 **Polymorphism in action**
 

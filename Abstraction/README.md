@@ -11,7 +11,7 @@
 # Abstraction
 
 <p align="center">
-<img height="270" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/abstraction.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/abstraction.png">
 </p>
 
 It is the process of hiding internal implementation details from the user and providing only necessary functionality to the users. It removes all non-essential things and shows only important things to users.
@@ -211,7 +211,7 @@ An interface can be thought of as a `contract` that a class has to fulfill while
 **Note:** `A class uses the keyword implements to use an interface but an interface uses the keyword extends to use another interface.`
 
 <p align="center">
-<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/implements.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/implements.png">
 </p>
 
 **Use an Interface when...**
@@ -270,7 +270,7 @@ When a class is derived from more than a single base class, i.e. when a class ha
 - A Hyundai Elantra IS A Sedan as well
 
 <p align="center">
-<img  src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple_implements.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/multiple_implements.png">
 </p>
 
 **Implementation**
@@ -578,7 +578,7 @@ Let’s implement the example of Elantra given at the start of the lesson. This 
 The above illustration then becomes:
 
 <p align="center">
-<img src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/interface.png">
+<img height="250px" src="https://github.com/tutungduong/oop_java_pInsights/blob/main/Images/interface.png">
 </p>
 
 ```java
